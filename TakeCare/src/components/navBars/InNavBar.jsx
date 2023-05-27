@@ -10,11 +10,11 @@ function InNav() {
     
     <Navbar className='navBar'  expand="lg">
       <Container >
-        <Navbar.Brand href="#home"><h1><strong>TakeCare</strong></h1></Navbar.Brand>
+        <Navbar.Brand href="/"><h1><strong>TakeCare</strong></h1></Navbar.Brand>
         <Navbar.Toggle aria-controls="basic-navbar-nav" />
         <Navbar.Collapse id="basic-navbar-nav">
           <Nav className="me-auto">
-            <Nav.Link href="#home">Producto</Nav.Link>
+            <Nav.Link href="/product">Producto</Nav.Link>
             <Nav.Link href="#link">Entrar</Nav.Link>
             <Nav.Link href="#link">Registrate</Nav.Link>
           </Nav>
