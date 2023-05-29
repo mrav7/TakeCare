@@ -6,7 +6,7 @@ import '../styles/MainFooter.css'
 
 export default function MainFooter() {
   return (
-    <Container fluid >
+    <Container fluid>
         <Row>
         <Col className='footer-columns'>
         <p><strong>Conectate con nosotros</strong></p>
@@ -15,7 +15,7 @@ export default function MainFooter() {
         </Col>
         <Col className='footer-columns'>
         <p><strong>Otras Paginas</strong></p>
-        <a className="footer-links" href="#">Preguntas Frecuntes</a>
+        <a className="footer-links" href="/faq">Preguntas Frecuntes</a>
         </Col>
         
       </Row>

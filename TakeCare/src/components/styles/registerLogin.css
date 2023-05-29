@@ -1,0 +1,43 @@
+.form {
+    background-color: white;
+    border: 1px solid;
+    border-radius: 15px;
+    padding: 10px 10px 10px 10px;
+    display: table;
+    margin: auto;
+}
+
+.bg {
+    background: url(https://api.time.com/wp-content/uploads/2014/11/old-man-old-age-happy.jpg);
+    background-size: cover;
+    background-attachment: fixed;
+}
+
+._h3 {
+    text-align: center;
+    color: rgb(50, 90, 110);
+}
+
+.mb-3 {
+    padding: 2px;
+    display: flex;
+}
+
+._button {
+    border: none;
+    width: 95%;
+    color: white;
+    background-color: rgb(50, 90, 110);
+    font-size: 25px;
+    padding: 10px;
+    margin: 10px;
+}
+
+._icon {
+    display: flex;
+    padding: 8px;
+    color: grey;
+    width: 35px;
+    height: 35px;
+    background: gainsboro;
+}

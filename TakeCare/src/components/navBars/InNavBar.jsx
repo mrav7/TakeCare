@@ -15,8 +15,8 @@ function InNav() {
         <Navbar.Collapse id="basic-navbar-nav">
           <Nav className="me-auto">
             <Nav.Link href="/product">Producto</Nav.Link>
-            <Nav.Link href="#link">Entrar</Nav.Link>
-            <Nav.Link href="#link">Registrate</Nav.Link>
+            <Nav.Link href="/login">Entrar</Nav.Link>
+            <Nav.Link href="/register">Registrate</Nav.Link>
           </Nav>
         </Navbar.Collapse>
       </Container>

@@ -11,7 +11,7 @@ export default function LandingPage() {
         <strong>Ayudando al Adulto Mayor</strong>
       </h1>
       <h3>Una aplicación con corazón.</h3>
-      <a href="#">
+      <a href="/register">
         <Button size="lg">
           <strong> Registrate ya!</strong>
         </Button>
