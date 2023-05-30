@@ -1,6 +1,4 @@
 import React from 'react'
-import InNav from "../components/navBars/InNavBar"
-import MainFooter from "../components/footers/MainFooter";
 import Container from 'react-bootstrap/Container';
 import Col from 'react-bootstrap/Col';
 import Button from 'react-bootstrap/Button';
@@ -11,7 +9,6 @@ import {MdEmail, MdKey} from 'react-icons/md'
 export default function Register() {
     return (
         <>
-            <InNav />
             <Container fluid className="bg">            
             <Form className="form">
                 <h3 class="_h3">Ingresa</h3>                
@@ -33,7 +30,6 @@ export default function Register() {
                 <p class="text-center">¿Aún no te has registrado? <a href="/register">Ingresa Aquí</a></p>
             </Form>
             </Container>
-            <MainFooter />
         </>
     )
 } 

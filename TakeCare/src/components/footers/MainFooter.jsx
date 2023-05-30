@@ -6,7 +6,7 @@ import '../styles/MainFooter.css'
 
 export default function MainFooter() {
   return (
-    <Container fluid>
+    <Container fluid className="footer">
         <Row>
         <Col className='footer-columns'>
         <p><strong>Conectate con nosotros</strong></p>

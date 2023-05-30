@@ -1,6 +1,4 @@
 import React from 'react'
-import InNav from "../components/navBars/InNavBar"
-import MainFooter from "../components/footers/MainFooter";
 import Container from 'react-bootstrap/Container';
 import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
@@ -9,10 +7,10 @@ import Form from 'react-bootstrap/Form';
 import '../components/styles/registerLogin.css'
 import {MdAccountCircle, MdEmail, MdMedicalServices, MdKey} from 'react-icons/md'
 
+
 export default function Login() {
     return (
         <>
-            <InNav />
             <Container fluid className="bg">            
             <Form className="form">
                 <h3 class="_h3">Regístrate</h3>
@@ -78,7 +76,6 @@ export default function Login() {
                 <p class="text-center">¿Ya tienes una cuenta? <a href="/login">Ingresa Aquí</a></p>
             </Form>
             </Container>
-            <MainFooter />
         </>
     )
 } 
