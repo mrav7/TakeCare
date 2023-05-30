@@ -1,3 +1,10 @@
+.footer {
+  position: fixed;
+  left: 0;
+  bottom: 0;
+  width: 100%;
+}
+
 .footer-columns {
     background-color: #AAAAAA;
     color: #F4F9F9;
