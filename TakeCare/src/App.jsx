@@ -10,8 +10,6 @@ return (
 <InNav/>
 <LandingPage/>
 <MainFooter/>
-
-
 </>
 )
 }
