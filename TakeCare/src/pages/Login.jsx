@@ -1,6 +1,4 @@
 import React from 'react'
-import InNav from "../components/navBars/InNavBar"
-import MainFooter from "../components/footers/MainFooter";
 import Container from 'react-bootstrap/Container';
 import Col from 'react-bootstrap/Col';
 import Button from 'react-bootstrap/Button';
