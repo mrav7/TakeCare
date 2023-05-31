@@ -18,9 +18,17 @@
     color: rgb(50, 90, 110);
 }
 
-.mb-3 {
+._mb-3 {
     padding: 2px;
     display: flex;
+}
+
+._center {
+    margin: 5% 35%;
+}
+
+._left {
+    text-align: left;
 }
 
 ._button {
