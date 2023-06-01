@@ -16,6 +16,8 @@ import {
 export default function Login() {
   const {
     register,
+    watch,
+    getValues,
     handleSubmit,
     formState: { errors },
   } = useForm();
@@ -90,7 +92,6 @@ export default function Login() {
                 type="email"
                 name="email"
                 {...register("email",{
-
                     required:true
                 }
                 )}
@@ -104,12 +105,15 @@ export default function Login() {
             </Form.Group>
           </Col>
           <Col>
-            <Form.Group className="mb-3" controlId="professionInput">
+            <Form.Group className="mb-3" controlId="professionInput" >
               <Form.Label>
                 <MdMedicalServices className="_icon" />
               </Form.Label>
-              <Form.Select>
-                <option selected disabled>
+              <Form.Select name="profession"  {...register("profession",{
+                    required:true
+                }
+                )} >
+                <option selected disabled value="">
                   Seleccione una profesión
                 </option>
                 <option value="Médico">Médico</option>
@@ -123,7 +127,11 @@ export default function Login() {
                   Terapeuta Ocupacional
                 </option>
               </Form.Select>
+                {errors.email && errors.email.type === "required" && (
+                  <p className="errorMsg">Pon tu profesión</p>
+                )}
             </Form.Group>
+            
           </Col>
           <Col>
             <Form.Group className="mb-3" controlId="passInput">
@@ -133,9 +141,27 @@ export default function Login() {
               <Form.Control
                 type="password"
                 name="password"
-                {...register("password")}
+                {...register("password",{
+                  required:true,
+                  minLength:6,
+                  maxLength:20,
+                  pattern:/^([A-Za-z0-9])+$/
+                }
+                )}
                 placeholder="Ingrese su contraseña"
               ></Form.Control>
+              {errors.password && errors.password.type === "required" && (
+                  <p className="errorMsg">Pon tu contraseña</p>
+                )}
+              {errors.password && errors.password.type === "minLength" && (
+                  <p className="errorMsg">Ponga mas de 6 caracteres</p>
+                )}
+              {errors.password && errors.password.type === "maxLength" && (
+                  <p className="errorMsg">Ponga menos de 20 caracteres</p>
+                )}
+              {errors.password && errors.password.type === "pattern" && (
+                  <p className="errorMsg">Ponga solo mayusculas, minusculas y numeros</p>
+                )}
               <Form.Text></Form.Text>
             </Form.Group>
           </Col>
@@ -145,13 +171,22 @@ export default function Login() {
                 <MdKey className="_icon" />
               </Form.Label>
               <Form.Control
-                type="email"
+                type="password"
                 name="rePassword"
-                {...register("rePassword")}
+                {...register("rePassword",{
+                  required:true
+                })}
                 placeholder="Ingrese nuevamente su contraseña"
               ></Form.Control>
+              {errors.rePassword && errors.rePassword.type === "required" && (
+                  <p className="errorMsg">Pon tu contraseña de nuevo</p>
+                )}
               <Form.Text></Form.Text>
             </Form.Group>
+            {watch("rePassword") !== watch("password") &&
+              getValues("rePassword") ? (
+               <p>password not match</p>
+               ) : null}
           </Col>
           <Button type="submit" className="_button">
             Crear Cuenta
@@ -160,8 +195,16 @@ export default function Login() {
             <Form.Group className="mb-3" controlID="acceptTermsInput">
               <Form.Check
                 type="checkbox"
+                name="checkbox"
+                {...register("checkbox",{
+                  required:true
+                })}
+
                 label="Acepta las Condiciones de Uso y Política de Privacidad"
               ></Form.Check>
+              {errors.checkbox && errors.checkbox.type === "required" && (
+                  <p className="errorMsg">Acepta las condiciones</p>
+                )}
             </Form.Group>
           </Col>
           <p class="text-center">
