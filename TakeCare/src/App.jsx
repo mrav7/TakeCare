@@ -1,5 +1,8 @@
+import InNav from './components/navBars/InNavBar.jsx';
+import MainFooter from './components/footers/MainFooter';
+import LandingPage from './components/main/LandingPage.jsx';
 import 'bootstrap/dist/css/bootstrap.min.css';
-import Layout from './components/layout/Layout'
+
 
 export default function App() {
 return (

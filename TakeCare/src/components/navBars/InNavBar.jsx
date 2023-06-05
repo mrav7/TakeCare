@@ -17,6 +17,7 @@ function InNav() {
             <Nav.Link href="/product">Producto</Nav.Link>
             <Nav.Link href="/login">Entrar</Nav.Link>
             <Nav.Link href="/register">Registrate</Nav.Link>
+            <Nav.Link href="/cp">Panel de control</Nav.Link>
           </Nav>
         </Navbar.Collapse>
       </Container>

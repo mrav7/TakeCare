@@ -6,9 +6,9 @@ import ProductContent from '../components/main/ProductContent'
 function Product() {
   return (
     <>
-    {/* <InNav/>*/} 
+    <InNav/> 
     <ProductContent/>
-    {/*<MainFooter/>*/} 
+    <MainFooter/>
     
     </>
     

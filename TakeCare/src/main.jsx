@@ -4,10 +4,11 @@ import Product from './pages/product.jsx'
 import Register from './pages/Register.jsx'
 import Login from './pages/Login.jsx'
 import Faq from './pages/Faq.jsx'
+import App from './App.jsx'
 import ControlPanel from './pages/ControlPanel.jsx'
 import PatientRegister from './pages/PatientRegister.jsx'
 import PatientDailyReview from './pages/PatientDailyReview.jsx'
-import Layout from './components/layout/Layout.jsx'
+
 import LandingPage from './components/main/LandingPage.jsx'
 import './index.css'
 import {
@@ -21,11 +22,11 @@ import {
 const router = createBrowserRouter([
   {
     path: "/",
-    element: <Layout/>,
+   
     children: [
       {
         path: "/",
-        element: <LandingPage/>,
+        element: <App/>,
       },{
         path: "product",
         element: <Product/>,
