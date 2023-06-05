@@ -14,8 +14,8 @@ function UsrNav() {
         <Navbar.Collapse id="basic-navbar-nav">
           <Nav className="ms-auto">
             <Nav.Link href="#">Actividad 3</Nav.Link>
-            <Nav.Link href="#">Actividad 2</Nav.Link>
-            <Nav.Link href="#">Actividad 1</Nav.Link>
+            <Nav.Link href="/signup-patient">registra paciente</Nav.Link>
+            <Nav.Link href="/patient-check">Revision diaria Paciente</Nav.Link>
             <Nav.Link href="/cp">Panel de control</Nav.Link>
             <Nav.Link href="#">Cerrar sesión</Nav.Link>            
           </Nav>
