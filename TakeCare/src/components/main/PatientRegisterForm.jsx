@@ -60,26 +60,6 @@ function PatientRegisterForm() {
               )}
             </Form.Group>
           </Col>
-          <Col>
-            <Form.Group className="mb-3" controlId="regPatientLastname">
-              <Form.Label>Apellidos</Form.Label>
-              <Form.Control
-                type="text"
-                name="secondLastName"
-                {...register("secondLastName", {
-                  required: true,
-                  pattern: /^([A-Za-z])+$/,
-                })}
-                placeholder="Ingrese el segundo apellido"
-              ></Form.Control>
-              {errors.secondLastName && errors.secondLastName.type === "required" && (
-                <p className="errorMsg">Pon tu segundo apellido</p>
-              )}
-              {errors.secondLastName && errors.secondLastName.type === "pattern" && (
-                <p className="errorMsg">Debe ser solo letras sin espacios</p>
-              )}
-            </Form.Group>
-          </Col>
         </Row>
         <Col>
           <Form.Group className="mb-3" controlId="regPatientRut">

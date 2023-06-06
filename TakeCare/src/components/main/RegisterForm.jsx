@@ -33,7 +33,7 @@ export default function RegisterForm() {
           <h3 class="_h3">Regístrate</h3>
           <Row>
             <Col>
-              <Form.Group className="mb-3" controlId="nameInput">
+              <Form.Group className="_mb-3" controlId="nameInput">
                 <Form.Label>
                   <MdAccountCircle className="_icon" />
                 </Form.Label>
@@ -58,7 +58,7 @@ export default function RegisterForm() {
               </Form.Group>
             </Col>
             <Col>
-              <Form.Group className="mb-3" controlId="lastnameInput">
+              <Form.Group className="_mb-3" controlId="lastnameInput">
                 <Form.Label>
                   <MdAccountCircle className="_icon" />
                 </Form.Label>
@@ -84,7 +84,7 @@ export default function RegisterForm() {
             </Col>
           </Row>
           <Col>
-            <Form.Group className="mb-3" controlId="emailInput">
+            <Form.Group className="_mb-3" controlId="emailInput">
               <Form.Label>
                 <MdEmail className="_icon" />
               </Form.Label>
@@ -105,7 +105,7 @@ export default function RegisterForm() {
             </Form.Group>
           </Col>
           <Col>
-            <Form.Group className="mb-3" controlId="professionInput" >
+            <Form.Group className="_mb-3" controlId="professionInput" >
               <Form.Label>
                 <MdMedicalServices className="_icon" />
               </Form.Label>
@@ -134,7 +134,7 @@ export default function RegisterForm() {
             
           </Col>
           <Col>
-            <Form.Group className="mb-3" controlId="passInput">
+            <Form.Group className="_mb-3" controlId="passInput">
               <Form.Label>
                 <MdKey className="_icon" />
               </Form.Label>
@@ -166,7 +166,7 @@ export default function RegisterForm() {
             </Form.Group>
           </Col>
           <Col>
-            <Form.Group className="mb-3" controlId="repassInput">
+            <Form.Group className="_mb-3" controlId="repassInput">
               <Form.Label>
                 <MdKey className="_icon" />
               </Form.Label>
@@ -192,7 +192,7 @@ export default function RegisterForm() {
             Crear Cuenta
           </Button>
           <Col>
-            <Form.Group className="mb-3" controlID="acceptTermsInput">
+            <Form.Group className="_mb-3" controlID="acceptTermsInput">
               <Form.Check
                 type="checkbox"
                 name="checkbox"
