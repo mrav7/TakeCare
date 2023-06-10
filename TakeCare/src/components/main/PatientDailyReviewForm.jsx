@@ -1,17 +1,38 @@
 import React from 'react'
 import {Container, Col, Form, Button}  from "react-bootstrap";
+import { useForm } from "react-hook-form";
+
 
 function PatientDailyReviewForm() {
+
+    const {
+        register,
+        watch,
+        getValues,
+        handleSubmit,
+        formState: { errors },
+      } = useForm();
+    
+      const onSubmit = (data) => {
+        console.log(data);
+      };
+
     return (
         <Container fluid>
             <h3 class="_h3">Registo chequeo diario</h3>
-            <Form className="">                
+            <Form className="" onSubmit={handleSubmit(onSubmit)}>                
                 <Col>
                     <Form.Group className="mb-3" controlId="checkPatientName">
                             <Form.Label>Paciente</Form.Label>
-                            <Form.Select aria-label="Default select example">
-                                <option selected disabled>Seleccione el paciente</option>                                
+                            <Form.Select aria-label="Default select example" name='patient'
+                            {...register("patient", {
+                                required: true
+                              })}>
+                                <option selected disabled value="">Seleccione el paciente</option>                                
                             </Form.Select>
+                            {errors.patient && errors.patient.type === "required" && (
+                             <p className="errorMsg">Elige paciente</p>
+                                    )}
                     </Form.Group>
                 </Col>
                 <Col>
