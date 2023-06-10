@@ -128,6 +128,7 @@ function PatientRegisterForm() {
               name="age"
               {...register("age", {
                 required: true,
+                pattern:/[0-9]+/,
                 min: 1,
                 max: 130,
               })}
@@ -141,6 +142,9 @@ function PatientRegisterForm() {
             )}
             {errors.age && errors.age.type === "max" && (
               <p className="errorMsg">Edad maxima 130</p>
+            )}
+            {errors.age && errors.age.type === "pattern" && (
+              <p className="errorMsg">Solo numeros</p>
             )}
             <Form.Text></Form.Text>
           </Form.Group>
