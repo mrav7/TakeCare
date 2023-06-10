@@ -8,6 +8,7 @@ import App from './App.jsx'
 import ControlPanel from './pages/ControlPanel.jsx'
 import PatientRegister from './pages/PatientRegister.jsx'
 import PatientDailyReview from './pages/PatientDailyReview.jsx'
+import PatientsList from './pages/PatientsList.jsx'
 
 import LandingPage from './components/main/LandingPage.jsx'
 import './index.css'
@@ -15,9 +16,6 @@ import {
   createBrowserRouter,
   RouterProvider,
 } from "react-router-dom";
-
-// falta solucionar paginacion para renderizar navbars distintos
-// no me funciono creando dos layouts
 
 const router = createBrowserRouter([
   {
@@ -48,6 +46,9 @@ const router = createBrowserRouter([
       },{
         path: "patient-check",
         element: <PatientDailyReview/>,
+      }, {
+        path: "patients-list",
+        element: <PatientsList />
       }
     ]
   }

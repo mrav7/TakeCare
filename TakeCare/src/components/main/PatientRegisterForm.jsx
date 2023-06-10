@@ -74,14 +74,12 @@ function PatientRegisterForm() {
                 })}
                 placeholder="Ingrese el segundo apellido"
               ></Form.Control>
-              {errors.secondLastName &&
-                errors.secondLastName.type === "required" && (
-                  <p className="errorMsg">Pon tu segundo apellido</p>
-                )}
-              {errors.secondLastName &&
-                errors.secondLastName.type === "pattern" && (
-                  <p className="errorMsg">Debe ser solo letras sin espacios</p>
-                )}
+              {errors.secondLastName && errors.secondLastName.type === "required" && (
+                <p className="errorMsg">Pon tu segundo apellido</p>
+              )}
+              {errors.secondLastName && errors.secondLastName.type === "pattern" && (
+                <p className="errorMsg">Debe ser solo letras sin espacios</p>
+              )}
             </Form.Group>
           </Col>
         </Row>

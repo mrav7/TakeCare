@@ -19,7 +19,8 @@ function ControlPanelContent() {
                                     <ListGroup.Item>Rol:</ListGroup.Item>
                                     <ListGroup.Item>Número telefónico:</ListGroup.Item>
                                     <ListGroup.Item>Correo electrónico:</ListGroup.Item>
-                                </ListGroup>                           
+                                </ListGroup>
+                                <a href="/patients-list">Listado de pacientes</a>                           
                             </Card.Body>
                         </Card>                
                     </Col>
