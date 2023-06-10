@@ -16,6 +16,7 @@ export default function MainFooter() {
         <Col className='footer-columns'>
         <p><strong>Otras Paginas</strong></p>
         <a className="footer-links" href="/faq">Preguntas Frecuntes</a>
+        <p><a className="footer-links" href="/privacy-policy">Política de Privacidad</a></p>
         </Col>
         
       </Row>
