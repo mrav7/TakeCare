@@ -1,6 +1,6 @@
 import React from 'react'
 import ReactDOM from 'react-dom/client'
-import Product from './pages/product.jsx'
+import Product from './pages/Product.jsx'
 import Register from './pages/Register.jsx'
 import Login from './pages/Login.jsx'
 import Faq from './pages/Faq.jsx'
