@@ -27,44 +27,12 @@ connection.connect(function(err:any) {
     }
 });
 
-const configuracion = {
-    hostname: "127.0.0.1",
-    port: 3000,
-}
-
 app.listen(app.get('port'), () => {
     console.log("Servidor funcionando en el puerto", app.get('port'));
 });
 
-app.post("/createUser", jsonParser,(req:any, res:any) => {
-    let firstname = req.body.firstname;
-    let lastname = req.body.lastname;
-    let email = req.body.email;
-    let profession = req.body.profession;
-    let password = req.body.password;
-    let isAdmin = req.body.isAdmin;
-    let user = {
-        firstname: firstname,
-        lastname: lastname,
-        email: email,
-        profession: profession,
-        password: password,
-        isAdmin: isAdmin
-    }
-
-    connection.query("INSERT INTO Users SET ?", user, (error:any, results:any, fields:any) => {
-        if (error) {
-            console.error("Error creating user: ", error);
-            res.status(500).send("Error creating user");
-            return;
-        }
-        
-        console.log("User created successfully!");
-        res.status(200).send("User created successfully");
-    });
-});
-
-app.get('/users', (req:any, res:any) => {
+// Método GET
+app.get('/getUsers', (req:any, res:any) => {
     connection.query("SELECT * FROM Users", (error:any, results:any) => {
         if (error) {
             console.error(error);
@@ -79,5 +47,26 @@ app.get('/users', (req:any, res:any) => {
         }
     })
 })
+
+//Método POST
+app.post("/createUser", jsonParser,(req:any, res:any) => {
+    let firstname = req.body.firstname;
+    let lastname = req.body.lastname;
+    let email = req.body.email;
+    let profession = req.body.profession;
+    let password = req.body.password;
+    let isAdmin = req.body.isAdmin;
+    connection.query("INSERT INTO Users (firstname,lastname,email,profession,password,isAdmin) VALUES (?,?,?,?,?,?)",[firstname,lastname,email,profession,password,isAdmin], (error:any, results:any, fields:any) => {
+        if (error) {
+            console.error("Error al crear el usuario: ", error);
+            res.status(500).send("Error al crear el usuario");
+            return;
+        }        
+        console.log("Usuario creado exitosamente!");
+        res.status(200).send("Usuario creado exitosamente");
+    });
+});
+
+
 
 
