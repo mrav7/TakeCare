@@ -1,3 +1,4 @@
+import { Request, Response } from 'express';
 const express = require('express');
 const mysql = require('mysql');
 const cors = require('cors');
@@ -31,22 +32,36 @@ app.listen(app.get('port'), () => {
     console.log("Servidor funcionando en el puerto", app.get('port'));
 });
 
-// Método GET
+// Método GET (Devuelve todos los usuarios de la tabla Users.)
 app.get('/getUsers', (req:any, res:any) => {
     connection.query("SELECT * FROM Users", (error:any, results:any) => {
         if (error) {
             console.error(error);
             res.status(500).send("No se hace ha podido realizar SELECT al servidor");
         } else {
-            const response = {
-                status: "Exito",
-                message: "Se ha realizado SELECT exitosamente",
-                data: results
-            }
-            res.status(200).json(response);
+            console.log("Se ha realizado SELECT exitosamente")
+            res.status(200).json(results);
         }
     })
 })
+
+//Método GET (Devuelve los datos de un solo usuario según su ID)
+app.get('/getUser/:id', (req: Request, res: Response) => {
+    let id: string = req.params.id;
+    connection.query("SELECT * FROM Users WHERE `Users`.`ID` = ? LIMIT 1", [id], (error: any, results: any[]) => {
+        if (error) {
+            console.error(error);
+            res.status(500).send("No se ha podido realizar SELECT en el servidor");
+        } else {
+            if (results.length > 0) {
+                console.log("Usuario encontrado exitosamente!");
+                res.status(200).json(results[0]);
+            } else {
+                res.status(404).send("No se encontró ningún usuario con el ID especificado");
+            }
+        }
+    });
+});
 
 //Método POST
 app.post("/createUser", jsonParser,(req:any, res:any) => {
@@ -66,6 +81,7 @@ app.post("/createUser", jsonParser,(req:any, res:any) => {
         res.status(200).send("Usuario creado exitosamente");
     });
 });
+
 
 
 

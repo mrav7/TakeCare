@@ -28,7 +28,7 @@ connection.connect(function (err) {
 app.listen(app.get('port'), () => {
     console.log("Servidor funcionando en el puerto", app.get('port'));
 });
-// Método GET
+// Método GET (Devuelve todos los usuarios de la tabla Users.)
 app.get('/getUsers', (req, res) => {
     connection.query("SELECT * FROM Users", (error, results) => {
         if (error) {
@@ -42,6 +42,25 @@ app.get('/getUsers', (req, res) => {
                 data: results
             };
             res.status(200).json(response);
+        }
+    });
+});
+// Método GET (Devuelve un solo usuario de la tabla Users a partir de su ID)
+app.get('/getUser/:id', (req, res) => {
+    let id = req.params.id;
+    connection.query("SELECT * FROM Users WHERE `Users`.`ID` = ? LIMIT 1", [id], (error, results) => {
+        if (error) {
+            console.error(error);
+            res.status(500).send("No se ha podido realizar SELECT en el servidor");
+        }
+        else {
+            if (results.length > 0) {                
+                console.log("Usuario encontrado exitosamente!")
+                res.status(200).json(results[0]);
+            }
+            else {
+                res.status(404).send("No se encontró ningún usuario con el ID especificado");
+            }
         }
     });
 });
