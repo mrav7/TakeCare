@@ -1,4 +1,4 @@
-import React from 'react'
+import React, {useRef} from 'react'
 import Container from 'react-bootstrap/Container';
 import Col from 'react-bootstrap/Col';
 import Button from 'react-bootstrap/Button';
@@ -6,6 +6,7 @@ import Form from 'react-bootstrap/Form';
 import '../styles/forms.css'
 import {MdEmail, MdKey} from 'react-icons/md'
 import { useForm } from "react-hook-form";
+import ReCAPTCHA from 'react-google-recaptcha';
 export default function LoginForm() {
 
     const {
@@ -19,6 +20,14 @@ export default function LoginForm() {
       const onSubmit = (data) => {
         console.log(data);
       };
+
+      const captcha = useRef(null);  
+
+      // genera un token cuando el usuario completa
+      // exitosamente el captcha
+      const onChange = () => {
+        console.log(captcha.current.getValue());
+      }
 
     return (
         <>
@@ -56,6 +65,13 @@ export default function LoginForm() {
                 )}
                         <Form.Text></Form.Text>
                     </Form.Group>
+                </Col>
+                <Col>
+                    <ReCAPTCHA className="_recaptcha"
+                    ref={captcha}
+                    sitekey="6LdNAsUmAAAAAIJ8z0IDTB0mYzJroF84cEEB-lQX"
+                    onChange={onChange}
+                    />
                 </Col>
                 <Button type="submit" className="_button">Ingresar</Button>               
                 <p class="text-center">¿Aún no te has registrado? <a href="/register">Ingresa Aquí</a></p>

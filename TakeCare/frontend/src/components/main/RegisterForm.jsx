@@ -1,4 +1,4 @@
-import React from "react";
+import React, {useRef} from "react";
 import Container from "react-bootstrap/Container";
 import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
@@ -6,6 +6,7 @@ import Button from "react-bootstrap/Button";
 import Form from "react-bootstrap/Form";
 import "../styles/forms.css"
 import { useForm } from "react-hook-form";
+import ReCAPTCHA from 'react-google-recaptcha';
 import {
   MdAccountCircle,
   MdEmail,
@@ -25,6 +26,14 @@ export default function RegisterForm() {
   const onSubmit = (data) => {
     console.log(data);
   };
+
+  const captcha = useRef(null);  
+
+  // genera un token cuando el usuario completa
+  // exitosamente el captcha
+  const onChange = () => {
+    console.log(captcha.current.getValue());
+  }
 
   return (
     <>
@@ -187,6 +196,13 @@ export default function RegisterForm() {
               getValues("rePassword") ? (
                <p>password not match</p>
                ) : null}
+          </Col>
+          <Col>
+            <ReCAPTCHA className="_recaptcha"
+              ref={captcha}
+              sitekey="6LdNAsUmAAAAAIJ8z0IDTB0mYzJroF84cEEB-lQX"
+              onChange={onChange}
+            />
           </Col>
           <Button type="submit" className="_button">
             Crear Cuenta
