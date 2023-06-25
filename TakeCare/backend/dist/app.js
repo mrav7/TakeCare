@@ -1,4 +1,5 @@
 "use strict";
+Object.defineProperty(exports, "__esModule", { value: true });
 const express = require('express');
 const mysql = require('mysql');
 const cors = require('cors');
@@ -67,13 +68,8 @@ app.get('/getUser/:id', (req, res) => {
 // ARCHIVO TIPO JSON ES NECESARIO PARA QUE FUNCIONE!
 // EJ: {"firstname":"Juan","lastname":"Alcayaga","email":"juan.alcayaga.y@outlook.com","profession":"Odontólogo","password":"Asd574sas5d7as464","isAdmin":true} 
 app.post("/createUser", jsonParser, (req, res) => {
-    let firstname = req.params.firstname;
-    let lastname = req.params.lastname;
-    let email = req.params.email;
-    let profession = req.params.profession;
-    let password = req.params.password;
-    let isAdmin = req.params.isAdmin;
-    connection.query("INSERT INTO Users (firstname,lastname,email,profession,password,isAdmin) VALUES (?,?,?,?,?,?)", [firstname, lastname, email, profession, password, isAdmin], (error, results, fields) => {
+    const { firstname, lastname, email, profession, password, isAdmin } = req.body;
+    connection.query("INSERT INTO Users (firstname, lastname, email, profession, password, isAdmin) VALUES (?, ?, ?, ?, ?, ?)", [firstname, lastname, email, profession, password, isAdmin], (error, results, fields) => {
         if (error) {
             console.error("Error al crear el usuario: ", error);
             res.status(500).send("Error al crear el usuario");

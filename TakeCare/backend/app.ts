@@ -69,19 +69,16 @@ app.get('/getUser/:id', (req: Request, res: Response) => {
 // Método POST (Inserta un usuario dentro de la tabla Users)
 // ARCHIVO TIPO JSON ES NECESARIO PARA QUE FUNCIONE!
 // EJ: {"firstname":"Juan","lastname":"Alcayaga","email":"juan.alcayaga.y@outlook.com","profession":"Odontólogo","password":"Asd574sas5d7as464","isAdmin":true} 
-app.post("/createUser", jsonParser,(req:any, res:any) => {
-    let firstname = req.params.firstname;
-    let lastname = req.params.lastname;
-    let email = req.params.email;
-    let profession = req.params.profession;
-    let password = req.params.password;
-    let isAdmin = req.params.isAdmin;
-    connection.query("INSERT INTO Users (firstname,lastname,email,profession,password,isAdmin) VALUES (?,?,?,?,?,?)",[firstname,lastname,email,profession,password,isAdmin], (error:any, results:any, fields:any) => {
+app.post("/createUser", jsonParser, (req: any, res: any) => {
+    const { firstname, lastname, email, profession, password, isAdmin } = req.body;
+
+    connection.query("INSERT INTO Users (firstname, lastname, email, profession, password, isAdmin) VALUES (?, ?, ?, ?, ?, ?)", [firstname, lastname, email, profession, password, isAdmin], (error: any, results: any, fields: any) => {
         if (error) {
             console.error("Error al crear el usuario: ", error);
             res.status(500).send("Error al crear el usuario");
             return;
-        }        
+        }
+
         console.log("Se logró agregar al usuario a la lista de usuarios.");
         res.status(200).send("Usuario creado exitosamente");
     });
