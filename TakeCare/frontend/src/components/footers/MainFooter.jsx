@@ -17,6 +17,8 @@ export default function MainFooter() {
         <p><strong>Otras Paginas</strong></p>
         <a className="footer-links" href="/faq">Preguntas Frecuntes</a>
         <p><a className="footer-links" href="/privacy-policy">Política de Privacidad</a></p>
+        <p><a className="footer-links" href="/admin-users-control">Control Usuarios Admin</a></p>
+
         </Col>
         
       </Row>

@@ -10,6 +10,7 @@ import PatientRegister from './pages/PatientRegister.jsx'
 import PatientDailyReview from './pages/PatientDailyReview.jsx'
 import PatientsList from './pages/PatientsList.jsx'
 import PrivacyPolicy from './pages/privacyPolicy.jsx'
+import AdminUsersControl from './pages/AdminUsersControl.jsx'
 
 import LandingPage from './components/main/LandingPage.jsx'
 import './index.css'
@@ -53,6 +54,9 @@ const router = createBrowserRouter([
       },{
         path: "privacy-policy",
         element: <PrivacyPolicy />
+      },{
+        path:"admin-users-control",
+        element:<AdminUsersControl/>
       }
     ]
   }

@@ -14,7 +14,7 @@ const connection = mysql.createConnection({
     user: "root",
     password: "",
     port: "3306",
-    database: "DB",
+    database: "db",
 });
 
 // Se establece la conexión con el servidor de la base de datos MySQL
@@ -39,8 +39,7 @@ app.get('/getUsers', (req:any, res:any) => {
             res.status(500).send("No se hace ha podido realizar SELECT al servidor");
         } else {
             const response = {
-                status: "Exito",
-                message: "Se ha realizado SELECT exitosamente",
+                
                 data: results
             }
             res.status(200).json(response);
