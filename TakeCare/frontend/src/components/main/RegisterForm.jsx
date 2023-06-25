@@ -135,6 +135,7 @@ export default function RegisterForm() {
                 <option value="TerapeutaOcupacional">
                   Terapeuta Ocupacional
                 </option>
+                <option value="N/A">N/A</option>
               </Form.Select>
                 {errors.email && errors.email.type === "required" && (
                   <p className="errorMsg">Pon tu profesión</p>
