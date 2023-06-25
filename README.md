@@ -7,7 +7,37 @@ Consiste en la aplicación web **TakeCare**, la cual en consideración de los ob
 ## Detalles de desarrollo
 
 
-**TakeCare** fue desarrollado utilizando . . .
+**TakeCare** fue desarrollado utilizando los siguientes frameworks y herramientas:
+
+<table border="0">
+ <tr>
+    <td><b style="font-size:20px">Frontend</b></td>
+    <td><b style="font-size:20px">Backend</b></td>
+    <td><b style="font-size:20px">Software</b></td>
+ </tr>
+ <tr>
+    <td><strong>Frameworks</strong>:</td>
+    <td><strong>Frameworks</strong>:</td>
+    <td><strong>IDE</strong>:</td>
+  </tr>
+ <tr>
+    <td>ReactJS, Bootstrap</td>
+    <td>NodeJS, ExpressJS</td>
+    <td>Visual Studio Code</td>
+ </tr>
+ <tr>
+    <td><strong>Herramientas</strong>:</td>
+    <td><strong>Herramientas<strong>:</td>
+    <td><strong>Herramientas<strong>:</td>
+
+ </tr>
+  <tr>
+    <td>Vite, jQuery Validation Plugin</td>
+    <td>MySQL, TypeScript</td>
+    <td>XAMPP, Insomnia</td>
+ </tr>
+</table>
+
 
 ## Clonar repositorio
 
@@ -29,6 +59,7 @@ npm run dev
 Para el backend
 
 ```
-
+npm install
+node app.js
 ```
 
