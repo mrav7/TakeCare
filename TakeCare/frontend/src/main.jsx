@@ -11,6 +11,7 @@ import PatientDailyReview from './pages/PatientDailyReview.jsx'
 import PatientsList from './pages/PatientsList.jsx'
 import PrivacyPolicy from './pages/privacyPolicy.jsx'
 import AdminUsersControl from './pages/AdminUsersControl.jsx'
+import AdminCreateUsers from './pages/AdminCreateUsers.jsx'
 
 import LandingPage from './components/main/LandingPage.jsx'
 import './index.css'
@@ -57,6 +58,9 @@ const router = createBrowserRouter([
       },{
         path:"admin-users-control",
         element:<AdminUsersControl/>
+      },{
+        path:"admin-create-users",
+        element:<AdminCreateUsers/>
       }
     ]
   }

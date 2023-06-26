@@ -18,6 +18,8 @@ export default function MainFooter() {
         <a className="footer-links" href="/faq">Preguntas Frecuntes</a>
         <p><a className="footer-links" href="/privacy-policy">Política de Privacidad</a></p>
         <p><a className="footer-links" href="/admin-users-control">Control Usuarios Admin</a></p>
+        <p><a className="footer-links" href="/admin-create-users">Crear Usuarios Admin</a></p>
+
 
         </Col>
         

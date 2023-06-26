@@ -7,6 +7,7 @@ const bodyParser = require('body-parser');
 var jsonParser = bodyParser.json();
 const app = express();
 app.use(cors());
+app.use(express.json());
 app.set('port', process.env.PORT || 3000);
 // Se establece la conexión con la base de datos MySQL
 const connection = mysql.createConnection({
@@ -67,11 +68,18 @@ app.get('/getUser/:id', (req, res) => {
 // Método POST (Inserta un usuario dentro de la tabla Users)
 // ARCHIVO TIPO JSON ES NECESARIO PARA QUE FUNCIONE!
 // EJ: {"firstname":"Juan","lastname":"Alcayaga","email":"juan.alcayaga.y@outlook.com","profession":"Odontólogo","password":"Asd574sas5d7as464","isAdmin":true} 
-app.post("/createUser", jsonParser, (req, res) => {
-    const { firstname, lastname, email, profession, password, isAdmin } = req.body;
-    connection.query("INSERT INTO Users (firstname, lastname, email, profession, password, isAdmin) VALUES (?, ?, ?, ?, ?, ?)", [firstname, lastname, email, profession, password, isAdmin], (error, results, fields) => {
-        if (error) {
-            console.error("Error al crear el usuario: ", error);
+app.post('/createUser', (req, res) => {
+    const values = [
+        req.body.firstname,
+        req.body.lastname,
+        req.body.email,
+        req.body.profession,
+        req.body.password,
+        req.body.isAdmin
+    ];
+    connection.query("INSERT INTO Users (firstname, lastname, email, profession, password, isAdmin) VALUES (?)", [values], (err, result) => {
+        if (err) {
+            console.error("Error al crear el usuario: ", err);
             res.status(500).send("Error al crear el usuario");
             return;
         }
