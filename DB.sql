@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost
--- Generation Time: Jun 24, 2023 at 06:44 AM
+-- Generation Time: Jun 26, 2023 at 01:14 PM
 -- Server version: 10.4.28-MariaDB
 -- PHP Version: 8.2.4
 
@@ -29,7 +29,7 @@ SET time_zone = "+00:00";
 
 CREATE TABLE `Patients` (
   `ID` int(11) NOT NULL,
-  `IDProfessional` int(10) UNSIGNED NOT NULL COMMENT 'La ID del profesional de la salud que atiende al paciente.',
+  `IDProfessional` int(10) NOT NULL COMMENT 'La ID del profesional de la salud que atiende al paciente.',
   `firstname` varchar(100) NOT NULL,
   `middlename` varchar(100) NOT NULL,
   `lastname` varchar(100) NOT NULL,
@@ -50,12 +50,13 @@ CREATE TABLE `Patients` (
 --
 
 INSERT INTO `Patients` (`ID`, `IDProfessional`, `firstname`, `middlename`, `lastname`, `rut`, `birthdate`, `age`, `gender`, `address`, `phone`, `insurance`, `diagnostics`, `treatments`, `observations`) VALUES
-(1, 2, 'Rosa', 'Fernandez', 'Valenzuela', '3.724.410-4', '1926-07-12', 97, 1, 'Eleuterio Ramirez 741, Región Metropolitana de Santiago', '+569 9864 0429', 'FONASA', 'Ea solum meliore salutandi quo, vis cu idque semper. Ei mollis appetere eos. Novum dicant graece at qui, pri ad sale percipitur. Vis eu dolore audire prompta, mel ne dico vocibus. Duo no suas dicunt viderer.\r\n\r\nNo cetero iisque concludaturque usu. Has te regione conclusionemque, assum consulatu cum cu. Tale laudem aliquip mel ex, novum noster quo in. Ea probatus signiferumque vix, nam partiendo iudicabit ei. Liber dicit persequeris vis an, no duo odio inermis consulatu, et principes gubergren tincidunt mel. Eam novum animal efficiantur te.', 'Quod quodsi praesent id nam, usu dignissim mediocritatem ex. Ea sed eirmod mandamus. Ex omnesque deterruisset qui, vim copiosae reprehendunt an, eu novum legendos vis. \r\n\r\nNo mea nulla ancillae oportere. Iriure democritum ad vis, assum splendide mel et.', 'N/A'),
 (2, 1, 'Manuel', 'Ortega', 'Guzman', '4.653.645-2', '1934-08-14', 89, 0, 'Avenida Presidente Juan Antonio Ríos, 1080, Villarica', '+569 9045 9036', 'ISAPRE', 'At aeque doming habemus usu. At duis veniam sea, cu principes moderatius intellegebat sea, eum no delectus quaestio. Novum vocent oblique per te, dicit sanctus labores an nec. Usu ea vitae option.\r\n\r\nPro brute gubergren ne, per cibo maluisset gloriatur ex. Sed dico posse hendrerit no, nec oblique recusabo omittantur et. Liber consul melius in his, nostro integre iudicabit mel no. Dicunt interesset nam ad. At mel eleifend salutatus omittantur, sed docendi noluisse convenire ex. Ipsum movet admodum eum ne, vel ea dico docendi referrentur.', 'Eum ea insolens delicatissimi. Ei qui nonumy mollis, quo atqui scripta in. Alienum scribentur philosophia at vel, te tritani delicata scriptorem vis. Eos et praesent accusamus. Id qui aeque essent debitis, mei te omnis placerat pertinacia.', 'Ad vel iracundia philosophia, an minim paulo delectus sit. Mel eu rebum adolescens, illud etiam mei no. Eu deseruisse intellegam quo. Vix in mutat malorum aliquid, zril torquatos ius ea, ea nulla aliquid mel. Id sed soleat oblique iudicabit, sea amet causae alterum id. Quo atqui assum vituperatoribus ut, paulo referrentur ex quo. In sit delectus omittantur, fierent mandamus reformidans te eos, civibus ocurreret disputando per et.'),
 (3, 6, 'Valentina', 'Espinoza', 'Almeida', '7.595.313-5', '1950-03-30', 73, 1, 'Uno Norte 461 Of. 506, Viña del Mar', '+569 9894 3527', 'ISAPRE', 'In habemus fuisset denique quo, iuvaret legendos cotidieque ei per, vis ei quas postea. Sed no sonet tractatos moderatius, ei nam civibus euripidis. Est ex amet persius dissentiet, eu agam putent feugiat eos. Vis modus reformidans comprehensam eu, has eu veri minim mazim. Doctus quaeque blandit nec cu.', 'Partiendo explicari assueverit mel id, magna saperet fierent sed et. In pri erat corpora. Fuisset blandit consetetur usu cu, oratio primis adolescens mei ut. Pro ex mutat error, nam nusquam constituam no. Et reque labore officiis eos.', 'N/A'),
-(4, 4, 'Luigi', 'Ferrari', 'Masseria', '15.201.783-9', '1985-09-25', 38, 0, 'Avenida Central, 6272, Santiago', '+569 9815 0928', 'FONASA', 'Etiam assum timeam his id, te dicunt voluptatum ius, ad his utamur deterruisset. Sint omittam honestatis te eam, quo no magna legendos, ubique persecuti intellegebat at vis. Ne eius praesent reprehendunt cum, primis legimus ea vix. Mel percipit voluptatum ad. In ornatus voluptua appetere eos, ea mei euismod tacimates disputationi, vix nostrum inciderint reformidans ut. Vel nostro splendide ea.\r\n\r\nCum ex tritani recteque imperdiet, mel in doctus sanctus. Dolorum necessitatibus nam eu. Nam nulla quaeque ad, eu sit nisl mollis electram. Qui eu adhuc porro volutpat. \r\n\r\nNostrum perfecto adipiscing ut sea. At eos nominati democritum, mel augue quidam cetero cu. Pro ne tempor facilis delectus, fabulas oportere ne his. Et saepe nostro splendide nam, est corrumpit evertitur voluptatibus in. Has eius fierent ut.\r\n\r\nHarum verterem ullamcorper eum ei. No per idque epicuri fierent, reque appareat usu te, ex quot rebum feugiat per. Est id nibh pericula, eligendi consetetur ne vix, id velit suscipiantur quo. ', 'Fierent liberavisse ut ius, sit ut nibh dolor phaedrum. Nemore maiestatis cu nec, vim tacimates tractatos ex. Cu mel novum quando lucilius, ius tempor fabulas habemus no, summo nobis saepe est te. Cu mei solum munere dictas, dicit impetus quaeque vis eu. Vis no purto patrioque, vis ut consulatu consequuntur.', 'N/A'),
-(5, 3, 'Alejandra', 'Fernandez', 'Garcia', '18203262-k', '1995-06-13', 28, 1, 'Av Vicuña Mackenna 2600 Macul, Región Metropolitana de Santiago', '+569 8765 0524', 'FONASA', 'Ex pro sonet regione sententiae. Qui modo aperiri dissentiunt ut, vel mentitum persecuti ne. Cum ut ornatus labores intellegat, ad mel novum malorum aliquam.', 'Nostrud equidem splendide eu nec. Habeo consulatu duo ex. An sed consul repudiare, sea ad esse nulla, pri alterum tacimates ut. Idque dictas ius no, quando dissentiunt mea et, nihil fuisset oporteat usu cu.\r\n\r\nEam aperiam integre dolorem ut. Eum nisl verear nominati eu. Et quod ludus epicuri vim, ex saepe malorum vim. Justo graeci sadipscing nam ex, ludus senserit qui ad. Ius eu reque delenit, ius iusto dicit ex, sale delectus id his.', 'N/A'),
-(6, 5, 'Mario', 'Lamborghini', 'Soto', '7.063.272-1', '1951-01-31', 72, 0, 'Avda. Alonso De Córdova 5151 702, Lascondes Santiago', '+569 8204 1523', 'FONASA', 'Te ullamcorper intellegebat eum. Ne eum dico principes dissentias, pri nostrud temporibus ut. No veri dicit oblique est, altera adolescens quo te. Vidit error euripidis duo ex, no laudem periculis disputando his. Timeam petentium disputationi eum te, ut nemore iuvaret pri. Est ancillae conceptam quaerendum ex.', 'Ut eos omnis brute, postea impedit detracto duo ea. Duis ancillae moderatius eam at, cu mea tale omnes deterruisset, per unum falli ea. Te eum integre recusabo, solum phaedrum cum eu. Aeterno maluisset eloquentiam te usu. Sed eu accusata accommodare complectitur, eum ignota suscipit ex.', 'Est summo populo aliquam ne, invidunt salutatus eum in. Nibh option reprimique pri ea, postulant necessitatibus vix et, id epicuri probatus dissentias usu. Fabulas scripserit ex his, qui illud movet indoctum te, at reque ubique adipiscing mei. Sed nominati vituperata concludaturque et, in has utroque erroribus constituam, tollit omittantur nam no. Ex mel numquam consetetur. Vim summo appareat volutpat ea, eam audire praesent temporibus ex, eam in novum erant mucius.\r\n\r\nSaperet alienum pertinax sit in. Dictas malorum facilisis vel ex, in illum etiam vim, vel munere salutatus ad. Mel in aliquip senserit, pro cu vitae facilis. Id verear audire abhorreant pri, his detraxit honestatis in, id mea illum noluisse disputationi. Scaevola accusamus temporibus eum ei, reprimique scripserit usu cu, has nisl affert essent at. Quo ex odio atqui erroribus.');
+(6, 1, 'Juan', 'Lastarria', 'Alcayaga', '7.879.514-1', '1956-12-15', 75, 0, 'Av. Brasil 2241, Valparaíso', '+56948484884', 'FONASA', 'Pulmonía', 'Antibióticos, nebulizador, descanso de pana', 'N/A'),
+(27, 6, 'Manuel', 'Rodriguez', 'Gonzalez', '12.671.916-k', '1993-12-15', 30, 0, 'Pasaje Saleciano 752, Quilpúe, Valparaiso', '+569123321744', 'ISAPRE', 'Ad probo errem vis, eu diceret vocibus conceptam sit, mei odio autem an. Atqui dolore consequuntur ius ne. Et atomorum iracundia duo, no inermis salutandi has. At vocent vidisse vel, case movet partem mei in. Nam ea tollit nonumy feugiat, sea ad quis vidit.', 'Suas numquam salutandi ei per, mea graeco principes persequeris et, nobis mandamus te nec. Et doctus diceret epicurei his, at usu possim mollis, has ex modus officiis. Quo in essent appareat. Partem albucius ad pro, vel ad dicit tation.', 'Ne discere equidem sit, et usu harum suscipiantur, te mea audiam vocibus deseruisse. Ex propriae liberavisse consectetuer pro, consul saperet antiopam ea mei, viris platonem vis ut.'),
+(28, 3, 'Alejandra', 'Roldán', 'Rojas', '15.671.916-k', '1987-12-15', 36, 1, 'Avda Apoquindo 3076, Santiago', '+56974569742', 'FONASA', 'Sed graeci perpetua necessitatibus et, sit no summo causae mollis. Quaeque saperet dissentiet duo ea. Ad has idque erant honestatis, quo et nostro repudiandae. Usu amet quodsi gloriatur ad. At omnesque maiestatis vis.', 'Eum ne everti electram. Appellantur neglegentur no quo, in omnes quando nostrum vix. Ea delectus incorrupte nam, prima quidam at ius. Sit verear vituperata reformidans at. His ad eius cetero molestie. Eos eu blandit tacimates.', 'N/A'),
+(29, 5, 'Javier', 'Pérez', 'Soto', '7.167.652-1', '1949-12-15', 74, 0, 'Avenida Santa Rosa, 3606, San Joaquín, Santiago', '+56974569742', 'FONASA', 'Quo ad salutatus vulputate, harum regione voluptatibus vix at. Has meliore nostrum atomorum at, odio nostrud dissentias et vix.', 'Legimus blandit ius eu, at nec diam urbanitas, malis bonorum prodesset cu pro. Modo volutpat consetetur quo ea. Ad ius dicit repudiandae. Cu movet accusamus quaerendum cum. Cu his alienum sensibus, has at quem vituperata.', 'In vis nobis dicam fierent, ea tincidunt conceptam vix, vis at viris quodsi deseruisse. At ullamcorper definitiones vel, est vero augue constituam at.'),
+(30, 21, 'Armando', 'Rejas', 'Casas', '2.167.652-1', '1922-12-15', 101, 0, 'Avenida Siempre Viva, 742, Campo de Primavera', '+56913469785', 'FONASA', 'N/A', 'N/A', 'Id audiam aperiam vix. Ut eos elitr persius mandamus. Eam ad meis porro democritum, altera feugiat qui et. Harum audiam nec et, viris persius eligendi mea no. Amet alia ea mei, eam essent molestie voluptua ut, ei vis facer atomorum forensibus. Ne nec semper detracto. Nostrum convenire vel ea. Nam aeque expetendis ea, cu veri dolorem vix. Ne his eros illud admodum, ei mel quot dicant comprehensam, et usu detraxit aliquando referrentur. Agam appetere ad mel, vix te vero laoreet pertinacia. Mei nisl labores dolores et. Qui labitur appetere at, scripta sanctus petentium vix cu. Decore oblique saperet id pro, has legere tempor aperiam at, eos mazim dicam id.');
 
 -- --------------------------------------------------------
 
@@ -78,13 +79,13 @@ CREATE TABLE `Users` (
 --
 
 INSERT INTO `Users` (`ID`, `firstname`, `lastname`, `email`, `profession`, `password`, `isAdmin`) VALUES
-(1, 'Juan', 'Alcayaga', 'juan.alcayaga.y@outlook.com', 'Médico', 'Asd574sas5d7as464', 0),
-(2, 'Fernanda', 'Matamala', 'f.matamala@hotmail.com', 'Enfermero', 'fmatamala123', 0),
-(3, 'Andrés', 'Riquelme', 'andres.riquelme.i@gmail.com', 'Psicólogo', '12345asdfgh', 0),
-(4, 'Jaime', 'Del Río', 'jdelrio@gmail.com', 'Médico', 'ad78ashd78ashd8', 0),
-(5, 'Javiera', 'Muñoz', 'jmunoz868@outlook.com', 'Odontólogo', 'asd123', 0),
-(6, 'Benjamín', 'Castro', 'benjacastro@gmail.com', 'N/A', 'ns8SDAdnqnlamkl19KSs', 1),
-(7, 'Maya', 'Gutierrez', 'maya.gutierrez@gmail.com', 'Nutricionista', 'asd1123adzas', 0);
+(1, 'Juan', 'Alcayaga', 'juan.alcayaga.y@outlook.com', 'Médico', '$2b$10$tM0O.AlUQk/DTmRihOQjCuxBRn.pH28EbdyVxrQQBhoRbPnqDwQqG', 0),
+(3, 'Andrés', 'Riquelme', 'andres.riquelme.i@gmail.com', 'Enfermero', '$2b$10$wnz6Cb2xO60PzudTAP0rzObLcn60UoUABiccv0Kwwer8.t5gi8qCa', 0),
+(5, 'Javiera', 'Carrera', 'jcarrera868@outlook.com', 'Psicólogo', '$2b$10$xjBNxF0e8PbRnurJM2kTYOBlrMn03/1cLU6z4EIarivK.FV1cv/Mi', 0),
+(6, 'Benjamín', 'Castro', 'benjacastro@gmail.com', 'N/A', '$2b$10$UzEdS0ThywRP3swuR8jGWOfj61PNlh1uHDLWQ3Dg7hv5Nvi5XRmtS', 1),
+(7, 'Maya', 'Gutierrez', 'maya.gutierrez@gmail.com', 'Nutricionista', '$2b$10$JSxClTNOrbJR6mLNN8zrxudIjJUhQ//j94zdVOD6Pzm.EmKrFCtRG', 0),
+(21, 'Francisca', 'Alcalde', 'fran.alcalde.t@hotmail.com', 'Médico', '$2b$10$BvYaqiC9ze7m6JE0sebWUuAPP3Sur00Zqa5mQAcqkKU5xX298WpHC', 0),
+(23, 'Alberto', 'Harcha', 'alberto.harcha@gmail.com', 'Fisioterapeuta', '$2b$10$FwTOEcWZre3KiSqhYroQaebdRxGbzFUsJAf5BbQjDeL0jL8Uxu6tq', 0);
 
 --
 -- Indexes for dumped tables
@@ -110,13 +111,13 @@ ALTER TABLE `Users`
 -- AUTO_INCREMENT for table `Patients`
 --
 ALTER TABLE `Patients`
-  MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=31;
 
 --
 -- AUTO_INCREMENT for table `Users`
 --
 ALTER TABLE `Users`
-  MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=24;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

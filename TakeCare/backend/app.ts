@@ -1,4 +1,5 @@
 import { Request, Response } from 'express';
+import bcrypt from 'bcrypt';
 const express = require('express');
 const mysql = require('mysql');
 const cors = require('cors');
@@ -15,7 +16,7 @@ const connection = mysql.createConnection({
     user: "root",
     password: "",
     port: "3306",
-    database: "db",
+    database: "DB",
 });
 
 // Se establece la conexión con el servidor de la base de datos MySQL
@@ -69,10 +70,10 @@ app.get('/getUser/:id', (req: Request, res: Response) => {
 // Método POST (Inserta un usuario dentro de la tabla Users)
 // ARCHIVO TIPO JSON ES NECESARIO PARA QUE FUNCIONE!
 // EJ: {"firstname":"Juan","lastname":"Alcayaga","email":"juan.alcayaga.y@outlook.com","profession":"Odontólogo","password":"Asd574sas5d7as464","isAdmin":true} 
-app.post("/createUser", jsonParser, (req: any, res: any) => {
-    const { firstname, lastname, email, profession, password, isAdmin } = req.body;
-
-    connection.query("INSERT INTO Users (firstname, lastname, email, profession, password, isAdmin) VALUES (?, ?, ?, ?, ?, ?)", [firstname, lastname, email, profession, password, isAdmin], (error: any, results: any, fields: any) => {
+app.post("/createUser", jsonParser, (req: any, res: any) => {  
+    const { firstname, lastname, email, password, profession, isAdmin } = req.body;
+    const encryptedPassword = bcrypt.hashSync(password, 10);
+    connection.query("INSERT INTO Users (firstname, lastname, email, profession, password, isAdmin) VALUES (?, ?, ?, ?, ?, ?)", [firstname, lastname, email, profession, encryptedPassword, isAdmin], (error: any, results: any, fields: any) => {
         if (error) {
             console.error("Error al crear el usuario: ", error);
             res.status(500).send("Error al crear el usuario");
@@ -108,7 +109,7 @@ app.put("/updateUser/:id", jsonParser, (req: Request, res: Response) => {
     let lastname: string = req.body.lastname;
     let email: string = req.body.email;
     let profession: string = req.body.profession;
-    let password: string = req.body.password;
+    let password: string = bcrypt.hashSync(req.body.password, 10);
     let isAdmin: boolean = req.body.isAdmin;
     connection.query("UPDATE Users SET firstname=?, lastname=?, email=?, profession=?, password=?, isAdmin=? WHERE ID=?", [firstname, lastname, email, profession, password, isAdmin, id], (error: any, results: any, fields: any) => {
         if (error) {
