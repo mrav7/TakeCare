@@ -1,4 +1,5 @@
 import { Request, Response } from 'express';
+import bcrypt from 'bcrypt';
 const express = require('express');
 const mysql = require('mysql');
 const cors = require('cors');
@@ -16,7 +17,7 @@ const connection = mysql.createConnection({
     user: "root",
     password: "",
     port: "3306",
-    database: "db",
+    database: "DB",
 });
 
 // Se establece la conexión con el servidor de la base de datos MySQL
@@ -116,7 +117,7 @@ app.put("/updateUser/:id", jsonParser, (req: Request, res: Response) => {
     let lastname: string = req.body.lastname;
     let email: string = req.body.email;
     let profession: string = req.body.profession;
-    let password: string = req.body.password;
+    let password: string = bcrypt.hashSync(req.body.password, 10);
     let isAdmin: boolean = req.body.isAdmin;
     connection.query("UPDATE Users SET firstname=?, lastname=?, email=?, profession=?, password=?, isAdmin=? WHERE ID=?", [firstname, lastname, email, profession, password, isAdmin, id], (error: any, results: any, fields: any) => {
         if (error) {
