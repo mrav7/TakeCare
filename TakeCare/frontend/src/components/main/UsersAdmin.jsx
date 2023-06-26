@@ -43,7 +43,7 @@ export default function UsersAdmin() {
                       <ListGroup.Item>{users.email}</ListGroup.Item>
                       <ListGroup.Item>{users.profession}</ListGroup.Item>
                       <ListGroup.Item>
-                        <Button variant="success">editar</Button>{" "}
+                        <Button variant="success"><Link to="/admin-edit-users/{users.ID}">Editar</Link></Button>
                         <Button variant="danger">eliminar</Button>
                       </ListGroup.Item>
                     </ListGroup>

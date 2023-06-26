@@ -5,6 +5,7 @@ import Container from "react-bootstrap/Container";
 import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
 import axios from "axios";
+import { useNavigate } from "react-router-dom";
 
 
 function CreateUsersAdmin() {
@@ -16,10 +17,14 @@ function CreateUsersAdmin() {
     password:''
 
   })
+  const navigate = useNavigate();
   const handleSubmit =(e) =>{
     e.preventDefault();
     axios.post('http://localhost:3000/createUser', values)
-    .then(res => console.log(res))
+    .then(res => {
+      console.log(res);
+      navigate('/admin-users-control')
+    })
     .catch(err => console.log(err)) 
   }
   return (
