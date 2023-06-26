@@ -72,18 +72,12 @@ app.get('/getUser/:id', (req, res) => {
 // Método POST (Inserta un usuario dentro de la tabla Users)
 // ARCHIVO TIPO JSON ES NECESARIO PARA QUE FUNCIONE!
 // EJ: {"firstname":"Juan","lastname":"Alcayaga","email":"juan.alcayaga.y@outlook.com","profession":"Odontólogo","password":"Asd574sas5d7as464","isAdmin":true} 
-app.post('/createUser', (req, res) => {
-    const values = [
-        req.body.firstname,
-        req.body.lastname,
-        req.body.email,
-        req.body.profession,
-        req.body.password,
-        req.body.isAdmin
-    ];
-    connection.query("INSERT INTO Users (firstname, lastname, email, profession, password, isAdmin) VALUES (?)", [values], (err, result) => {
-        if (err) {
-            console.error("Error al crear el usuario: ", err);
+app.post("/createUser", jsonParser, (req, res) => {
+    const { firstname, lastname, email, password, profession, isAdmin } = req.body;
+    const encryptedPassword = bcrypt_1.default.hashSync(password, 10);
+    connection.query("INSERT INTO Users (firstname, lastname, email, profession, password, isAdmin) VALUES (?, ?, ?, ?, ?, ?)", [firstname, lastname, email, profession, encryptedPassword, isAdmin], (error, results, fields) => {
+        if (error) {
+            console.error("Error al crear el usuario: ", error);
             res.status(500).send("Error al crear el usuario");
             return;
         }
