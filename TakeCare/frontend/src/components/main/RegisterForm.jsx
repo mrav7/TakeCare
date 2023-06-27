@@ -199,7 +199,7 @@ export default function RegisterForm() {
                ) : null}
           </Col>
           <Col>
-            <ReCAPTCHA className="_recaptcha"
+            <ReCAPTCHA className="_recaptchaRegister"
               ref={captcha}
               sitekey="6LdNAsUmAAAAAIJ8z0IDTB0mYzJroF84cEEB-lQX"
               onChange={onChange}

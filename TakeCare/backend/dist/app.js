@@ -1,9 +1,29 @@
 "use strict";
-var __importDefault = (this && this.__importDefault) || function (mod) {
-    return (mod && mod.__esModule) ? mod : { "default": mod };
+var __createBinding = (this && this.__createBinding) || (Object.create ? (function(o, m, k, k2) {
+    if (k2 === undefined) k2 = k;
+    var desc = Object.getOwnPropertyDescriptor(m, k);
+    if (!desc || ("get" in desc ? !m.__esModule : desc.writable || desc.configurable)) {
+      desc = { enumerable: true, get: function() { return m[k]; } };
+    }
+    Object.defineProperty(o, k2, desc);
+}) : (function(o, m, k, k2) {
+    if (k2 === undefined) k2 = k;
+    o[k2] = m[k];
+}));
+var __setModuleDefault = (this && this.__setModuleDefault) || (Object.create ? (function(o, v) {
+    Object.defineProperty(o, "default", { enumerable: true, value: v });
+}) : function(o, v) {
+    o["default"] = v;
+});
+var __importStar = (this && this.__importStar) || function (mod) {
+    if (mod && mod.__esModule) return mod;
+    var result = {};
+    if (mod != null) for (var k in mod) if (k !== "default" && Object.prototype.hasOwnProperty.call(mod, k)) __createBinding(result, mod, k);
+    __setModuleDefault(result, mod);
+    return result;
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-const bcrypt_1 = __importDefault(require("bcrypt"));
+const bcrypt = __importStar(require("bcrypt"));
 const express = require('express');
 const mysql = require('mysql');
 const cors = require('cors');
@@ -74,7 +94,7 @@ app.get('/getUser/:id', (req, res) => {
 // EJ: {"firstname":"Juan","lastname":"Alcayaga","email":"juan.alcayaga.y@outlook.com","profession":"Odontólogo","password":"Asd574sas5d7as464","isAdmin":true} 
 app.post("/createUser", jsonParser, (req, res) => {
     const { firstname, lastname, email, password, profession, isAdmin } = req.body;
-    const encryptedPassword = bcrypt_1.default.hashSync(password, 10);
+    const encryptedPassword = bcrypt.hashSync(password, 10);
     connection.query("INSERT INTO Users (firstname, lastname, email, profession, password, isAdmin) VALUES (?, ?, ?, ?, ?, ?)", [firstname, lastname, email, profession, encryptedPassword, isAdmin], (error, results, fields) => {
         if (error) {
             console.error("Error al crear el usuario: ", error);
@@ -110,7 +130,7 @@ app.put("/updateUser/:id", jsonParser, (req, res) => {
     let lastname = req.body.lastname;
     let email = req.body.email;
     let profession = req.body.profession;
-    let password = bcrypt_1.default.hashSync(req.body.password, 10);
+    let password = bcrypt.hashSync(req.body.password, 10);
     let isAdmin = req.body.isAdmin;
     connection.query("UPDATE Users SET firstname=?, lastname=?, email=?, profession=?, password=?, isAdmin=? WHERE ID=?", [firstname, lastname, email, profession, password, isAdmin, id], (error, results, fields) => {
         if (error) {

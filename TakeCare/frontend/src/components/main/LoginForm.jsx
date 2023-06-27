@@ -7,8 +7,9 @@ import '../styles/forms.css'
 import {MdEmail, MdKey} from 'react-icons/md'
 import { useForm } from "react-hook-form";
 import ReCAPTCHA from 'react-google-recaptcha';
+import axios from 'axios';
 export default function LoginForm() {
-
+    const API_BASE_URL = 'http://localhost:3010';
     const {
         register,
         watch,
@@ -17,18 +18,21 @@ export default function LoginForm() {
         formState: { errors },
       } = useForm();
     
-      const onSubmit = (data) => {
-        console.log(data);
-      };
-
-      const captcha = useRef(null);  
-
-      // genera un token cuando el usuario completa
-      // exitosamente el captcha
+      const onSubmit = () => {
+        const {email, password} = getValues();
+        axios.post(`${API_BASE_URL}/api/login`, {email, password})
+          .then(response => {
+            localStorage.setItem('token', response.data.token);
+            console.log(response.data);
+          })
+          .catch(error => {
+            console.error(error);
+          });
+      };      
+      const captcha = useRef(null); 
       const onChange = () => {
         console.log(captcha.current.getValue());
       }
-
     return (
         <>
             <Container fluid className="bg">            
@@ -67,7 +71,7 @@ export default function LoginForm() {
                     </Form.Group>
                 </Col>
                 <Col>
-                    <ReCAPTCHA className="_recaptcha"
+                    <ReCAPTCHA className="_recaptchaLogin"
                     ref={captcha}
                     sitekey="6LdNAsUmAAAAAIJ8z0IDTB0mYzJroF84cEEB-lQX"
                     onChange={onChange}

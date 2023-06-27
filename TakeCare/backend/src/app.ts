@@ -1,5 +1,5 @@
 import { Request, Response } from 'express';
-import bcrypt from 'bcrypt';
+import * as bcrypt from 'bcrypt';
 const express = require('express');
 const mysql = require('mysql');
 const cors = require('cors');
@@ -258,7 +258,3 @@ app.put("/updatePatient/:id", jsonParser, (req: Request, res: Response) => {
         res.status(200).send("Paciente actualizado exitosamente");
     });
 });
-
-
-
-
