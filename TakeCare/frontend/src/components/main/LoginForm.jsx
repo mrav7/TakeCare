@@ -9,7 +9,6 @@ import { useForm } from "react-hook-form";
 import ReCAPTCHA from 'react-google-recaptcha';
 import axios from 'axios';
 export default function LoginForm() {
-    const API_BASE_URL = 'http://localhost:3010';
     const {
         register,
         watch,
@@ -18,6 +17,8 @@ export default function LoginForm() {
         formState: { errors },
       } = useForm();
     
+      // Conexión con backend
+      const API_BASE_URL = 'http://localhost:3010';
       const onSubmit = () => {
         const {email, password} = getValues();
         axios.post(`${API_BASE_URL}/api/login`, {email, password})

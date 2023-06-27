@@ -1,12 +1,13 @@
-import React, {useRef} from "react";
+import React, { useRef } from "react";
 import Container from "react-bootstrap/Container";
 import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
 import Button from "react-bootstrap/Button";
 import Form from "react-bootstrap/Form";
-import "../styles/forms.css"
+import "../styles/forms.css";
 import { useForm } from "react-hook-form";
 import ReCAPTCHA from 'react-google-recaptcha';
+import axios from 'axios';
 import {
   MdAccountCircle,
   MdEmail,
@@ -23,17 +24,32 @@ export default function RegisterForm() {
     formState: { errors },
   } = useForm();
 
-  const onSubmit = (data) => {
-    console.log(data);
-  };
-
-  const captcha = useRef(null);  
-
-  // genera un token cuando el usuario completa
-  // exitosamente el captcha
+  const captcha = useRef(null);
   const onChange = () => {
     console.log(captcha.current.getValue());
-  }
+  };
+
+  //Conexión con backend
+  const API_BASE_URL = 'http://localhost:3010';
+  const onSubmit = () => {
+    const { name, lastName, email, profession, password } = getValues();
+    const value = {
+      firstname: name,
+      lastname: lastName, 
+      email: email,
+      profession: profession,
+      password: password,
+      isAdmin: true
+    };
+    axios.post(`${API_BASE_URL}/api/register`, value)
+      .then(response => {
+        localStorage.setItem('token', response.data.token);
+        console.log(response.data);
+      })
+      .catch(error => {
+        console.error(error);
+      });
+  };
 
   return (
     <>
@@ -78,10 +94,10 @@ export default function RegisterForm() {
                     required: true,
                     pattern: /^([A-Za-z])+$/,
                   })}
-                  placeholder="Ingrese su primer appellido"
+                  placeholder="Ingrese su primer apellido"
                 ></Form.Control>
 
-{errors.lastName && errors.lastName.type === "required" && (
+                {errors.lastName && errors.lastName.type === "required" && (
                   <p className="errorMsg">Pon tu primer apellido</p>
                 )}
                 {errors.lastName && errors.lastName.type === "pattern" && (
@@ -107,9 +123,9 @@ export default function RegisterForm() {
                 placeholder="Ingrese su correo electrónico"
               ></Form.Control>
 
-            {errors.email && errors.email.type === "required" && (
-                  <p className="errorMsg">Pon tu correo</p>
-                )}
+              {errors.email && errors.email.type === "required" && (
+                <p className="errorMsg">Pon tu correo</p>
+              )}
               <Form.Text></Form.Text>
             </Form.Group>
           </Col>
@@ -137,11 +153,11 @@ export default function RegisterForm() {
                 </option>
                 <option value="N/A">N/A</option>
               </Form.Select>
-                {errors.email && errors.email.type === "required" && (
-                  <p className="errorMsg">Pon tu profesión</p>
-                )}
+              {errors.profession && errors.profession.type === "required" && (
+                <p className="errorMsg">Pon tu profesión</p>
+              )}
             </Form.Group>
-            
+
           </Col>
           <Col>
             <Form.Group className="_mb-3" controlId="passInput">
@@ -161,17 +177,17 @@ export default function RegisterForm() {
                 placeholder="Ingrese su contraseña"
               ></Form.Control>
               {errors.password && errors.password.type === "required" && (
-                  <p className="errorMsg">Pon tu contraseña</p>
-                )}
+                <p className="errorMsg">Pon tu contraseña</p>
+              )}
               {errors.password && errors.password.type === "minLength" && (
-                  <p className="errorMsg">Ponga mas de 6 caracteres</p>
-                )}
+                <p className="errorMsg">Ponga más de 6 caracteres</p>
+              )}
               {errors.password && errors.password.type === "maxLength" && (
-                  <p className="errorMsg">Ponga menos de 20 caracteres</p>
-                )}
+                <p className="errorMsg">Ponga menos de 20 caracteres</p>
+              )}
               {errors.password && errors.password.type === "pattern" && (
-                  <p className="errorMsg">Ponga solo mayusculas, minusculas y numeros</p>
-                )}
+                <p className="errorMsg">Ponga solo mayúsculas, minúsculas y números</p>
+              )}
               <Form.Text></Form.Text>
             </Form.Group>
           </Col>
@@ -184,19 +200,19 @@ export default function RegisterForm() {
                 type="password"
                 name="rePassword"
                 {...register("rePassword",{
-                  required:true
+                  required:true,
+                  validate: value => value === watch('password')
                 })}
                 placeholder="Ingrese nuevamente su contraseña"
               ></Form.Control>
               {errors.rePassword && errors.rePassword.type === "required" && (
-                  <p className="errorMsg">Pon tu contraseña de nuevo</p>
-                )}
+                <p className="errorMsg">Pon tu contraseña de nuevo</p>
+              )}
+              {errors.rePassword && errors.rePassword.type === "validate" && (
+                <p className="errorMsg">Las contraseñas no coinciden</p>
+              )}
               <Form.Text></Form.Text>
             </Form.Group>
-            {watch("rePassword") !== watch("password") &&
-              getValues("rePassword") ? (
-               <p>password not match</p>
-               ) : null}
           </Col>
           <Col>
             <ReCAPTCHA className="_recaptchaRegister"
@@ -209,7 +225,7 @@ export default function RegisterForm() {
             Crear Cuenta
           </Button>
           <Col>
-            <Form.Group className="_mb-3" controlID="acceptTermsInput">
+            <Form.Group className="_mb-3" controlId="acceptTermsInput">
               <Form.Check
                 type="checkbox"
                 name="checkbox"
@@ -220,11 +236,11 @@ export default function RegisterForm() {
                 label="Acepta las Condiciones de Uso y Política de Privacidad"
               ></Form.Check>
               {errors.checkbox && errors.checkbox.type === "required" && (
-                  <p className="errorMsg">Acepta las condiciones</p>
-                )}
+                <p className="errorMsg">Acepta las condiciones</p>
+              )}
             </Form.Group>
           </Col>
-          <p class="text-center">
+          <p className="text-center">
             ¿Ya tienes una cuenta? <a href="/login">Ingresa Aquí</a>
           </p>
         </Form>
