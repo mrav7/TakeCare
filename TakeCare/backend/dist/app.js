@@ -108,7 +108,7 @@ app.post("/createUser", jsonParser, (req, res) => {
 // Método DELETE (Elimina un usuario de la tabla Users según su ID)
 app.delete('/deleteUser/:id', (req, res) => {
     let id = req.params.id;
-    connection.query("DELETE FROM Users WHERE `Users`.`ID` = ?", [id], (error, results) => {
+    connection.query("DELETE FROM Users WHERE ID = ?", [id], (error, results) => {
         if (error) {
             console.error(error);
             res.status(500).send("No se ha logrado eliminar al usuario de la lista.");

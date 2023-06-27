@@ -1,8 +1,12 @@
 import React from 'react'
 import CreateUsersAdmin from '../components/main/CreateUsersAdmin'
-
+import AdminNavBar from '../components/navBars/AdminNavBar'
 export default function AdminCreateUsers() {
   return (
-    <div><CreateUsersAdmin/></div>
+
+    <div>
+      <AdminNavBar/>
+      <CreateUsersAdmin/>
+      </div>
   )
 }

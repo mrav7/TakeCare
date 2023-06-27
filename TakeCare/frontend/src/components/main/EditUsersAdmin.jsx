@@ -1,12 +1,20 @@
 import React from 'react'
-import { useParams } from 'react-router-dom'
+import { useParams, useLocation } from 'react-router-dom'
 
 
-export default function EditUsersAdmin() {
 
-    
+
+function EditUsersAdmin() {
+
+  
 
   return (
+    <>
     <div>EditUsersAdmin</div>
+    <h1></h1>
+    </>
+    
   )
 }
+
+export default EditUsersAdmin
