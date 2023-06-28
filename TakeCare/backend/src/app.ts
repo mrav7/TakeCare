@@ -17,7 +17,7 @@ const connection = mysql.createConnection({
     user: "root",
     password: "",
     port: "3306",
-    database: "DB",
+    database: "db",
 });
 
 // Se establece la conexión con el servidor de la base de datos MySQL

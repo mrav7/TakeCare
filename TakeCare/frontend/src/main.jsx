@@ -15,6 +15,8 @@ import AdminCreateUsers from './pages/AdminCreateUsers.jsx'
 import AdminEditUsers from './pages/AdminEditUsers.jsx'
 import LandingPage from './components/main/LandingPage.jsx'
 import AdminPatientsControl from './pages/AdminPatientsControl.jsx'
+import AdminUpdateUser from './pages/AdminUpdateUser.jsx'
+import UserPatientsView from './pages/UserPatientsView.jsx'
 import './index.css'
 import {
   BrowserRouter,
@@ -94,6 +96,11 @@ ReactDOM.createRoot(document.getElementById('root')).render(
         <Route path="admin-create-users" element={<AdminCreateUsers/>} />
       <Route path='admin-edit-users' element={<AdminEditUsers />} />
       <Route path='admin-patients-control' element={<AdminPatientsControl/>}/>
+      <Route path='admin-update-user' element={<AdminUpdateUser/>}/>
+      <Route path='admin-update-user' element={<AdminUpdateUser/>}/>
+      <Route path='user-patient-view' element={<UserPatientsView/>}/>
+
+
       </Routes>
     </BrowserRouter>
   </React.StrictMode>,

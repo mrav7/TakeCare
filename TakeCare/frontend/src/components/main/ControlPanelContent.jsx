@@ -1,63 +1,60 @@
-import React from 'react'
-import {Container, Row, Col, Card, ListGroup, InputGroup, Form}  from "react-bootstrap";
+import React, { Fragment, useEffect, useState } from "react";
+import { Link, useNavigate } from "react-router-dom";
 
-function ControlPanelContent() {
-    return (
-        <Container fluid className="text-center">
-            <Container fluid className="_center">
-                <Row className="">
-                    <Col >
-                        <Card style={{width: '25%'}}>
-                            <Card.Header>
-                                <h3>Datos Profesional</h3>
-                            </Card.Header>
-                            <Card.Title>
-                                <h5>Nombre Apellido1 Apellido2</h5>
-                            </Card.Title>
-                            <Card.Body>                            
-                                <ListGroup vertical className="_left">
-                                    <ListGroup.Item>Rol:</ListGroup.Item>
-                                    <ListGroup.Item>Número telefónico:</ListGroup.Item>
-                                    <ListGroup.Item>Correo electrónico:</ListGroup.Item>
-                                </ListGroup>
-                                <a href="/patients-list">Listado de pacientes</a>                           
-                            </Card.Body>
-                        </Card>                
-                    </Col>
-                </Row>
-            </Container>
-            <Container fluid className="_center" >
-            <Row className="">
-                    <Col >
-                        <Card style={{width: '25%'}}>
-                            <Card.Header>
-                                <h3>Datos Paciente</h3>
-                            </Card.Header>
-                            <Card.Title>
-                                <h5>Nombre Apellido1 Apellido2</h5>
-                            </Card.Title>
-                            <Card.Body>
-                                <InputGroup className="mb-3">
-                                    <Form.Control
-                                        placeholder="Nombre / RUT / ID paciente"
-                                    />
-                                    <InputGroup.Text id="basic-addon2">Buscar</InputGroup.Text>
-                                    </InputGroup>                            
-                                <ListGroup vertical className="_left">
-                                    <ListGroup.Item>Edad:</ListGroup.Item>
-                                    <ListGroup.Item>Sexo:</ListGroup.Item>
-                                    <ListGroup.Item>Número telefónico:</ListGroup.Item>
-                                    <ListGroup.Item>Correo electrónico:</ListGroup.Item>
-                                    <ListGroup.Item>Dirección:</ListGroup.Item>
-                                </ListGroup>
-                                    <a href="">Ficha médica</a>                            
-                            </Card.Body>
-                        </Card>                
-                    </Col>
-                </Row>
-            </Container>
-        </Container>
-    )
+import {
+  Container,
+  Row,
+  Col,
+  Card,
+  ListGroup,
+  InputGroup,
+  Form,
+  Button
+} from "react-bootstrap";
+import Dropdown from "react-bootstrap/Dropdown";
+import DropdownButton from "react-bootstrap/DropdownButton";
+import axios from "axios";
+
+
+
+export default function ControlPanelContent() {
+    let userid=1;
+  const [data, setData] = useState([]);
+  useEffect(() => {
+    axios
+      .get("http://localhost:3000/getUsers")
+
+      .then((res) => setData(res.data))
+      .catch((err) => console.log(err));
+  }, []);
+
+
+
+  return (
+    
+    <Container>
+        {data.map((users, index) => {
+              return (
+                
+                  <Card key={index} style={{ margin: "20px" }}>
+                    <Card.Header>
+                      {users.firstname} {users.lastname}
+                    </Card.Header>
+                    <ListGroup variant="flush">
+                      <ListGroup.Item>ID: {users.ID}</ListGroup.Item>
+                      <ListGroup.Item>{users.email}</ListGroup.Item>
+                      <ListGroup.Item>{users.profession}</ListGroup.Item>
+                      <ListGroup.Item>
+                      <Button variant="info" href="user-patient-view">VerPacientes</Button>{' '}
+                      </ListGroup.Item>
+                      
+                    </ListGroup>
+                  </Card>
+                  
+                
+              );
+            })}
+        
+    </Container>
+  );
 }
-
-export default ControlPanelContent;

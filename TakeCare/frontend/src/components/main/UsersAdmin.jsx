@@ -90,9 +90,9 @@ export default function UsersAdmin() {
                           Delete
                         </Button>
                       </ListGroup.Item>
-                      <ListGroup.Item>
-                        <Button variant="info" onClick={handleClick}>
-                          Editar
+                      {/* <ListGroup.Item>
+                        <Button variant="info">
+                 <Link to="/admin-update-user">Editar</Link>
                         </Button>
 
                         {isShown && (
@@ -176,13 +176,13 @@ export default function UsersAdmin() {
                                   }
                                 />
                               </Form.Group>
-                              <Button variant="primary" type="submit" onClick={() => handleUpdate(users.ID)} >
+                              <Button variant="primary" type="submit" >
                                 Envia Cambios
                               </Button>
                             </Form>
                           </div>
-                        )}
-                      </ListGroup.Item>
+                                )}
+                      </ListGroup.Item>*/}
                     </ListGroup>
                   </Card>
                   
