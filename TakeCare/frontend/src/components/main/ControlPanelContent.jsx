@@ -35,7 +35,7 @@ export default function ControlPanelContent() {
     <Container>
         {data.map((users, index) => {
               return (
-                
+                  
                   <Card key={index} style={{ margin: "20px" }}>
                     <Card.Header>
                       {users.firstname} {users.lastname}
