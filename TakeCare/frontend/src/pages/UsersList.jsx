@@ -1,13 +1,13 @@
 import React from 'react'
 import AdminNav from '../components/navBars/AdminNavBar.jsx'
 import MainFooter from '../components/footers/MainFooter'
-import DisplayPatientsList from '../components/main/DisplayPatientsList.jsx'
+import DisplayUsers from '../components/main/DisplayUsersList.jsx'
 
 function PatientsList() {
     return (
         <>
             <AdminNav />
-            <DisplayPatientsList />
+            <DisplayUserssList />
             <MainFooter />
         </>
     )

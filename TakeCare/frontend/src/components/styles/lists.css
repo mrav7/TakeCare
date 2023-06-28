@@ -1,0 +1,51 @@
+.person-list {
+margin-bottom: 20px;
+}
+
+.person-list-item {
+margin-bottom: 10px;
+}
+
+.person-info {
+font-weight: bold;
+}
+
+.edit-delete-buttons {
+display: flex;
+justify-content: flex-end;
+align-items: center;
+margin-top: 10px;
+}
+
+.edit-delete-buttons button {
+margin-left: 5px;
+}
+
+.edit-button {
+background-color: #337ab7;
+color: #fff;
+}
+
+.delete-button {
+background-color: #d9534f;
+color: #fff;
+}
+
+.person-details-row {
+margin-bottom: 10px;
+}
+
+.person-details-row .col {
+padding-right: 5px;
+}
+
+.person-details-row .col:last-child {
+padding-right: 0;
+}
+
+.diagnosis-field,
+.treatment-field,
+.observation-field {
+margin-bottom: 10px;
+}
+
