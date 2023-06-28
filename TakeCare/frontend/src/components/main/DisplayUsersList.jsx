@@ -72,4 +72,4 @@ class DisplayUsersFile extends Component {
   }
 }
 
-export default DisplayUserFile;
+export default DisplayUsersFile;

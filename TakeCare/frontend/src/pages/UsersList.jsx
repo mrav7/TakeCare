@@ -1,16 +1,16 @@
 import React from 'react'
 import AdminNav from '../components/navBars/AdminNavBar.jsx'
 import MainFooter from '../components/footers/MainFooter'
-import DisplayUsers from '../components/main/DisplayUsersList.jsx'
+import DisplayUsersList from '../components/main/DisplayUsersList.jsx'
 
-function PatientsList() {
+function UserList() {
     return (
         <>
             <AdminNav />
-            <DisplayUserssList />
+            <DisplayUsersList />
             <MainFooter />
         </>
     )
 }
 
-export default PatientsList
+export default UserList;
