@@ -1,281 +1,321 @@
-import React from "react";
+import React, { useState } from "react";
 import { Container, Row, Col, Form, Button } from "react-bootstrap";
 import { useForm } from "react-hook-form";
+import axios from "axios";
+import { useNavigate } from "react-router-dom";
 
 function PatientRegisterForm() {
-  const {
-    register,
-    watch,
-    getValues,
-    handleSubmit,
-    formState: { errors },
-  } = useForm();
+  const { register, handleSubmit, formState: { errors } } = useForm();
+  const [values, setValues] = useState({
+    IDProfessional: '',
+    firstname: '',
+    middlename: '',
+    lastname: '',
+    rut: '',
+    birthdate: '',
+    age: '',
+    gender: '',
+    address: '',
+    phone: '',
+    insurance: '',
+    diagnostics: '',
+    treatments: '',
+    observations: ''
+  });
+  const navigate = useNavigate();
 
   const onSubmit = (data) => {
-    console.log(data);
-  };
+    axios.post('http://localhost:3000/createPatient', values)
+      .then(res => {
+        console.log(res);
+        navigate('/patientPage')
+      })
+      .catch(err => console.log(err)) 
+  }
 
   return (
     <Container fluid>
-      <h3 class="_h3">Registro de paciente</h3>
-      <Form className="" onSubmit={handleSubmit(onSubmit)}>
-        <Row>
+      <h3 className="_h3">Registro de paciente</h3>
+      <Form className="" method="" onSubmit={handleSubmit(onSubmit)}>
+        <Col>
+            <Form.Group className="mb-3" controlId="regPatientsProfessionalID">
+              <Form.Label>ID del profesional tratante</Form.Label>
+              <Form.Control 
+                type="text"
+                name="IDProfessional"
+                {...register("IDProfessional", {
+                  required: true,
+                  min: 1,
+                  max: 1000,
+                })}
+                placeholder="Ingrese su ID"
+                onChange={e => setValues({...values, IDProfessional: e.target.value})}
+              ></Form.Control>
+              {errors.IDProfessional && errors.IDProfessional.type === "required" && (
+                <p className="errorMsg">Ingresa el ID del profesional</p>
+              )}
+              {errors.IDProfessional && errors.IDProfessional.type === "min" && (
+                <p className="errorMsg">El ID debe ser mayor a 0</p>
+              )}
+              {errors.IDProfessional && errors.IDProfessional.type === "max" && (
+                <p className="errorMsg">El ID debe ser menor o igual a 1000</p>
+              )}
+            </Form.Group>
+          </Col>
+        <Row>          
           <Col>
             <Form.Group className="mb-3" controlId="regPatientName">
               <Form.Label>Nombres</Form.Label>
-              <Form.Control
+              <Form.Control 
                 type="text"
-                name="name"
-                {...register("name", {
+                name="firstname"
+                {...register("firstname", {
                   required: true,
                   pattern: /^([A-Za-z])+$/,
                 })}
-                placeholder="Primer Nombre"
+                placeholder="Ingrese su nombre de pila"
+                onChange={e => setValues({...values, firstname: e.target.value})}
               ></Form.Control>
-              {errors.name && errors.name.type === "required" && (
-                <p className="errorMsg">Pon tu nombre</p>
+              {errors.firstname && errors.firstname.type === "required" && (
+                <p className="errorMsg">Ingresa el primer nombre</p>
               )}
-              {errors.name && errors.name.type === "pattern" && (
-                <p className="errorMsg">Debe ser solo letras sin espacios</p>
+              {errors.firstname && errors.firstname.type === "pattern" && (
+                <p className="errorMsg">Solo se permiten letras sin espacios</p>
               )}
             </Form.Group>
           </Col>
           <Col>
-            <Form.Group className="mb-3" controlId="regPatientLastname">
-              <Form.Label>Apellidos</Form.Label>
+            <Form.Group className="mb-3" controlId="regPatientMiddlename">
+              <Form.Label>Primer apellido</Form.Label>
               <Form.Control
                 type="text"
-                name="firstLastName"
-                {...register("firstLastName", {
-                  required: true,
+                name="middlename"
+                {...register("middlename", {
                   pattern: /^([A-Za-z])+$/,
                 })}
-                placeholder="Ingrese el primer apellido"
+                placeholder="Ingrese su primer apellido"
+                onChange={e => setValues({...values, middlename: e.target.value})}
               ></Form.Control>
-              {errors.firstLastName &&
-                errors.firstLastName.type === "required" && (
-                  <p className="errorMsg">Pon tu primer Apellido</p>
-                )}
-              {errors.firstLastName &&
-                errors.firstLastName.type === "pattern" && (
-                  <p className="errorMsg">Debe ser solo letras sin espacios</p>
-                )}
+              {errors.middlename && errors.middlename.type === "pattern" && (
+                <p className="errorMsg">Solo se permiten letras sin espacios</p>
+              )}
             </Form.Group>
           </Col>
           <Col>
-            <Form.Group className="mb-3" controlId="regPatientLastname">
-              <Form.Label>Apellidos</Form.Label>
+            <Form.Group className="mb-3" controlId="regPatientLastName">
+              <Form.Label>Segundo Apellido</Form.Label>
               <Form.Control
                 type="text"
-                name="secondLastName"
-                {...register("secondLastName", {
+                name="lastname"
+                {...register("lastname", {
                   required: true,
                   pattern: /^([A-Za-z])+$/,
                 })}
-                placeholder="Ingrese el segundo apellido"
+                placeholder="Ingrese su segundo"
+                onChange={e => setValues({...values, lastname: e.target.value})}
               ></Form.Control>
-              {errors.secondLastName && errors.secondLastName.type === "required" && (
-                <p className="errorMsg">Pon tu segundo apellido</p>
+              {errors.lastname && errors.lastname.type === "required" && (
+                <p className="errorMsg">Ingresa su segundo apellido</p>
               )}
-              {errors.secondLastName && errors.secondLastName.type === "pattern" && (
-                <p className="errorMsg">Debe ser solo letras sin espacios</p>
+              {errors.lastname && errors.lastname.type === "pattern" && (
+                <p className="errorMsg">Solo se permiten letras sin espacios</p>
               )}
             </Form.Group>
           </Col>
         </Row>
-        <Col>
-          <Form.Group className="mb-3" controlId="regPatientRut">
-            <Form.Label>RUT</Form.Label>
-            <Form.Control
-              type="text"
-              name="rut"
-              {...register("rut", {
-                required: true,
-                pattern: /[0-9]{8}(-)(([0-9]{1})|k)/,
-              })}
-              placeholder="Ingrese el RUT del paciente"
-            ></Form.Control>
-            {errors.rut && errors.rut.type === "required" && (
-              <p className="errorMsg">Pon tu rut</p>
-            )}
-            {errors.rut && errors.rut.type === "pattern" && (
-              <p className="errorMsg">Debe poner rut con guion y sin puntos</p>
-            )}
-            <Form.Text></Form.Text>
-          </Form.Group>
-        </Col>
-        <Col>
-          <Form.Group className="mb-3" controlId="regPatientBirthday">
-            <Form.Label>Fecha de nacimiento</Form.Label>
-            <Form.Control
-              type="date"
-              name="date"
-              {...register("date", {
-                required: true,
-              })}
-              placeholder="Ingrese la fecha de nacimiento del paciente"
-            ></Form.Control>
-            {errors.date && errors.date.type === "required" && (
-              <p className="errorMsg">Pon fecha</p>
-            )}
-          </Form.Group>
-        </Col>
-        <Col>
-          <Form.Group className="mb-3" controlId="regPatientAge">
-            <Form.Label>Edad</Form.Label>
-            <Form.Control
-              type="text"
-              name="age"
-              {...register("age", {
-                required: true,
-                pattern:/[0-9]+/,
-                min: 1,
-                max: 130,
-              })}
-              placeholder="Ingrese la edad del paciente"
-            ></Form.Control>
-            {errors.age && errors.age.type === "required" && (
-              <p className="errorMsg">Poner edad</p>
-            )}
-            {errors.age && errors.age.type === "min" && (
-              <p className="errorMsg">Edad minima 1</p>
-            )}
-            {errors.age && errors.age.type === "max" && (
-              <p className="errorMsg">Edad maxima 130</p>
-            )}
-            {errors.age && errors.age.type === "pattern" && (
-              <p className="errorMsg">Solo numeros</p>
-            )}
-            <Form.Text></Form.Text>
-          </Form.Group>
-        </Col>
-        <Col>
-          <Form.Group className="mb-3" controlId="regPatientGender">
-            <Form.Label>Sexo</Form.Label>
-            <Form.Select
-              aria-label="Default select example"
-              name="gender"
-              {...register("gender", {
-                required: true,
-              })}
-            >
-              <option selected disabled value="">
-                Seleccione el sexo del paciente
-              </option>
-              <option value="1">Másculino</option>
-              <option value="2">Femenino</option>
-            </Form.Select>
-            {errors.gender && errors.gender.type === "required" && (
-              <p className="errorMsg">Pon tu género</p>
-            )}
-          </Form.Group>
-        </Col>
-        <Col>
-          <Form.Group className="mb-3" controlId="regPatientAddr">
-            <Form.Label>Domicilio</Form.Label>
-            <Form.Control
-              type="text"
-              name="homeAdress"
-              {...register("homeAdress", {
-                required: true,
-              })}
-              placeholder="Ingrese el domicilio del paciente"
-            ></Form.Control>
-            {errors.homeAdress && errors.homeAdress.type === "required" && (
-              <p className="errorMsg">Pon dirección</p>
-            )}
-            <Form.Text></Form.Text>
-          </Form.Group>
-        </Col>
-        <Col>
-          <Form.Group className="mb-3" controlId="regPatientPhone">
-            <Form.Label>Número telefónico</Form.Label>
-            <Form.Control
-              type="text"
-              name="phone"
-              {...register("phone", {
-                required: true,
-                pattern: /9([0-9]{8})$/,
-              })}
-              placeholder="Ingrese el número telefónico del paciente"
-            ></Form.Control>
-            {errors.phone && errors.phone.type === "required" && (
-              <p className="errorMsg">Pon telefono</p>
-            )}
-            {errors.phone && errors.phone.type === "pattern" && (
-              <p className="errorMsg">Parte con 9 y continúa con 8 numeros</p>
-            )}
-          </Form.Group>
-        </Col>
-        <Col>
-          <Form.Group className="mb-3" controlId="regPatientPrevicion">
-            <Form.Label>Previsión</Form.Label>
-            <Form.Control
-              type="text"
-              name="prevision"
-              {...register("prevision", {
-                required: true,
-                pattern: /^[A-Za-z]+$/,
-              })}
-              placeholder="Ingrese la previción del paciente"
-            ></Form.Control>
-            {errors.prevision && errors.prevision.type === "required" && (
-              <p className="errorMsg">Pon tu seguro</p>
-            )}
-            {errors.prevision && errors.prevision.type === "pattern" && (
-              <p className="errorMsg">Solo usa letras</p>
-            )}
-          </Form.Group>
-        </Col>
-        <Col>
-          <Form.Group className="mb-3" controlId="regPatientDiag">
-            <Form.Label>Diagnósticos</Form.Label>
-            <Form.Control
-              type="text"
-              as="textarea"
-              rows={3}
-              placeholder="Ingrese el diagnóstico del paciente"
-              name="diagnostic"
-              {...register("diagnostic", {
-                required: true,
-              })}
-            ></Form.Control>
-            {errors.diagnostic && errors.diagnostic.type === "required" && (
-              <p className="errorMsg">Pon diagnostico</p>
-            )}
-          </Form.Group>
-        </Col>
-        <Col>
-          <Form.Group className="mb-3" controlId="regPatientTrat">
-            <Form.Label>Tratamientos</Form.Label>
-            <Form.Control
-              type="text"
-              as="textarea"
-              rows={3}
-              name="treatment"
-              {...register("treatment", {
-                required: true,
-              })}
-              placeholder="Ingrese los tratamientos del paciente"
-            ></Form.Control>
-            {errors.treatment && errors.treatment.type === "required" && (
-              <p className="errorMsg">Pon tratamiento</p>
-            )}
-          </Form.Group>
-        </Col>
-        <Col>
-          <Form.Group className="mb-3" controlId="regPatientObs">
-            <Form.Label>Observaciones</Form.Label>
-            <Form.Control
-              type="text"
-              as="textarea"
-              rows={3}
-              placeholder="Registre sus observaciones"
-            ></Form.Control>
-            <Form.Text></Form.Text>
-          </Form.Group>
-        </Col>
-        <Button type="submit" className="_button">
+        <Row>          
+          <Col>
+            <Form.Group className="mb-3" controlId="regPatientRUT">
+              <Form.Label>RUT</Form.Label>
+              <Form.Control
+                type="text"
+                name="rut"
+                {...register("rut", {
+                  required: true,
+                  pattern: /[0-9]{8}(-)(([0-9]{1})|k)/,
+                })}
+                placeholder="RUT del paciente sin puntos y con guión"
+                onChange={e => setValues({...values, rut: e.target.value})}
+              ></Form.Control>
+              {errors.rut && errors.rut.type === "required" && (
+                <p className="errorMsg">Ingresa el RUT</p>
+              )}
+              {errors.rut && errors.rut.type === "pattern" && (
+                <p className="errorMsg">Ingresa un RUT válido</p>
+              )}
+            </Form.Group>
+          </Col>
+          <Col>
+            <Form.Group className="mb-3" controlId="regPatientBirthdate">
+              <Form.Label>Fecha de nacimiento</Form.Label>
+              <Form.Control
+                type="text"
+                name="birthdate"
+                {...register("birthdate", {
+                  required: true,
+                })}
+                placeholder="AAAA/MM/DD"
+                onChange={e => setValues({...values, birthdate: e.target.value})}
+              ></Form.Control>
+              {errors.birthdate && errors.birthdate.type === "required" && (
+                <p className="errorMsg">Ingresa la fecha de nacimiento</p>
+              )}
+            </Form.Group>
+          </Col>
+          <Col>
+            <Form.Group className="mb-3" controlId="regPatientAge">
+              <Form.Label>Edad</Form.Label>
+              <Form.Control
+                type="number"
+                name="age"
+                {...register("age", {
+                  required: true,
+                  min: 0,
+                })}
+                placeholder="Edad"
+                onChange={e => setValues({...values, age: e.target.value})}
+              ></Form.Control>
+              {errors.age && errors.age.type === "required" && (
+                <p className="errorMsg">Ingresa la edad</p>
+              )}
+              {errors.age && errors.age.type === "min" && (
+                <p className="errorMsg">La edad debe ser mayor o igual a 0</p>
+              )}
+            </Form.Group>
+          </Col>
+        </Row>
+        <Row>
+          <Col>
+            <Form.Group className="mb-3" controlId="regPatientGender">
+              <Form.Label>Sexo</Form.Label>
+              <Form.Control 
+                as="select"
+                name="gender"
+                {...register("gender", {
+                  required: true,
+                })}
+                onChange={e => setValues({...values, gender: e.target.value})}>
+                <option value="">Selecciona una opción</option>
+                <option value="0">Masculino</option>
+                <option value="1">Femenino</option>
+              </Form.Control>
+              {errors.gender && errors.gender.type === "required" && (
+                <p className="errorMsg">Selecciona el sexo</p>
+              )}
+            </Form.Group>
+          </Col>
+          <Col>
+            <Form.Group className="mb-3" controlId="regPatientAddress">
+              <Form.Label>Dirección</Form.Label>
+              <Form.Control
+                type="text"
+                name="address"
+                {...register("address", {
+                  required: true,
+                })}
+                placeholder="Dirección"
+                onChange={e => setValues({...values, address: e.target.value})}
+              ></Form.Control>
+              {errors.address && errors.address.type === "required" && (
+                <p className="errorMsg">Ingresa la dirección</p>
+              )}
+            </Form.Group>
+          </Col>
+          <Col>
+            <Form.Group className="mb-3" controlId="regPatientPhone">
+              <Form.Label>Teléfono</Form.Label>
+              <Form.Control
+                type="tel"
+                name="phone"
+                {...register("phone", {
+                  required: true,
+                  pattern: /[0-9]{9}/,
+                })}
+                placeholder="Teléfono"
+                onChange={e => setValues({...values, phone: e.target.value})}
+              ></Form.Control>
+              {errors.phone && errors.phone.type === "required" && (
+                <p className="errorMsg">Ingresa el teléfono</p>
+              )}
+              {errors.phone && errors.phone.type === "pattern" && (
+                <p className="errorMsg">Ingresa un número de teléfono válido</p>
+              )}
+            </Form.Group>
+          </Col>
+          <Col>
+            <Form.Group className="mb-3" controlId="regPatientInsurance">
+              <Form.Label>Seguro de salud</Form.Label>
+              <Form.Control
+                type="text"
+                name="insurance"
+                {...register("insurance", {
+                  required: true,
+                })}
+                placeholder="Seguro de salud"
+                onChange={e => setValues({...values, insurance: e.target.value})}
+              ></Form.Control>
+              {errors.insurance && errors.insurance.type === "required" && (
+                <p className="errorMsg">Ingresa el seguro de salud</p>
+              )}
+            </Form.Group>
+          </Col>
+        </Row>
+        <Row>
+          <Col>
+            <Form.Group className="mb-3" controlId="regPatientDiagnostics">
+              <Form.Label>Diagnósticos</Form.Label>
+              <Form.Control
+                as="textarea"
+                rows={3}
+                name="diagnostics"
+                {...register("diagnostics", {
+                  required: true,
+                })}
+                placeholder="Diagnósticos"
+                onChange={e => setValues({...values, diagnostics: e.target.value})}
+              ></Form.Control>
+              {errors.diagnostics && errors.diagnostics.type === "required" && (
+                <p className="errorMsg">Ingresa los diagnósticos</p>
+              )}
+            </Form.Group>
+          </Col>
+        </Row>
+        <Row>
+          <Col>
+            <Form.Group className="mb-3" controlId="regPatientTreatments">
+              <Form.Label>Tratamientos</Form.Label>
+              <Form.Control
+                as="textarea"
+                rows={3}
+                name="treatments"
+                {...register("treatments", {
+                  required: true,
+                })}
+                placeholder="Tratamientos"
+                onChange={e => setValues({...values, treatments: e.target.value})}
+              ></Form.Control>
+              {errors.treatments && errors.treatments.type === "required" && (
+                <p className="errorMsg">Ingresa los tratamientos</p>
+              )}
+            </Form.Group>
+          </Col>
+        </Row>
+        <Row>
+          <Col>
+            <Form.Group className="mb-3" controlId="regPatientObservations">
+              <Form.Label>Observaciones</Form.Label>
+              <Form.Control
+                as="textarea"
+                rows={3}
+                name="observations"
+                {...register("observations")}
+                placeholder="Observaciones"
+                onChange={e => setValues({...values, observations: e.target.value})}
+              ></Form.Control>
+            </Form.Group>
+          </Col>
+        </Row>
+        <Button variant="primary" type="submit">
           Registrar paciente
         </Button>
       </Form>
