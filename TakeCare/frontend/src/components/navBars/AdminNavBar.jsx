@@ -20,7 +20,7 @@ export default function AdminNavBar() {
           <Nav className="me-auto">
             <Nav.Link href="/product">Producto</Nav.Link>
             <Nav.Link href="/login">Entrar</Nav.Link>
-            <Nav.Link href="/admin-users-control">Lista de usuarios</Nav.Link>
+            <Nav.Link href="admin-user-list-control">Lista de usuarios</Nav.Link>
             <Nav.Link href="/admin-patients-control">Lista de pacientes</Nav.Link>
           </Nav>
         </Navbar.Collapse>

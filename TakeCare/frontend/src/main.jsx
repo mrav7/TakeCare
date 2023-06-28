@@ -26,56 +26,7 @@ import {
   RouterProvider,
   Routes,
 } from "react-router-dom";
-
-
-{/*const router = createBrowserRouter([
-  {
-    path: "/",
-   
-    children: [
-      {
-        path: "/",
-        element: <App/>,
-      },{
-        path: "product",
-        element: <Product/>,
-      },{
-        path: "register",
-        element: <Register/>,
-      },{
-        path: "login",
-        element: <Login/>,                                    
-      },{                               
-        path: "faq",
-        element: <Faq/>,
-      },{
-        path: "cp",
-        element: <ControlPanel/>,
-      },{
-        path: "signup-patient",
-        element: <PatientRegister/>,
-      },{
-        path: "patient-check",
-        element: <PatientDailyReview/>,
-      },{
-        path: "patients-list",
-        element: <PatientsList />
-      },{
-        path: "privacy-policy",
-        element: <PrivacyPolicy />
-      },{
-        path:"admin-users-control",
-        element:<AdminUsersControl/>
-      },{
-        path:"admin-create-users",
-        element:<AdminCreateUsers/>
-      },{
-         
-      }
-    ]
-  }
-]);*/}
-
+import UserList from './pages/UsersList.jsx'
 
 ReactDOM.createRoot(document.getElementById('root')).render(
   <React.StrictMode>
@@ -91,12 +42,13 @@ ReactDOM.createRoot(document.getElementById('root')).render(
         <Route path="cp" element={<ControlPanel/>} />
         <Route path="signup-patient" element={<PatientRegister/>} />
         <Route path="patient-check" element={<PatientDailyReview/>} />
-        <Route path="patients-list" element={<PatientsList />} />
+        {/* <Route path="patients-list" element={<PatientsList />} /> */}
         <Route path="privacy-policy" element={<PrivacyPolicy />} />
         <Route path="admin-users-control" element={<AdminUsersControl />} />
         <Route path="admin-create-users" element={<AdminCreateUsers/>} />
       <Route path='admin-edit-users' element={<AdminEditUsers />} />
-      <Route path='admin-patients-control' element={<AdminPatientsControl/>}/>
+      <Route path='admin-patients-control' element={<PatientsList/>}/>
+      <Route path='admin-user-list-control' element={<UsersList />}/>
       <Route path='admin-update-user' element={<AdminUpdateUser/>}/>
       <Route path='user-patient-view' element={<UserPatientsView/>}/>
 
@@ -104,4 +56,4 @@ ReactDOM.createRoot(document.getElementById('root')).render(
       </Routes>
     </BrowserRouter>
   </React.StrictMode>,
-)
+  )
