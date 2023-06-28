@@ -20,6 +20,7 @@ import axios from "axios";
 export default function ControlPanelContent() {
     let userid=1;
   const [data, setData] = useState([]);
+  const [patients,setPatients] = useState([]);
   useEffect(() => {
     axios
       .get("http://localhost:3000/getUsers")
@@ -28,6 +29,9 @@ export default function ControlPanelContent() {
       .catch((err) => console.log(err));
   }, []);
 
+  
+    
+  
 
 
   return (
@@ -44,9 +48,7 @@ export default function ControlPanelContent() {
                       <ListGroup.Item>ID: {users.ID}</ListGroup.Item>
                       <ListGroup.Item>{users.email}</ListGroup.Item>
                       <ListGroup.Item>{users.profession}</ListGroup.Item>
-                      <ListGroup.Item>
-                      <Button variant="info" href="user-patient-view">VerPacientes</Button>{' '}
-                      </ListGroup.Item>
+                      
                       
                     </ListGroup>
                   </Card>
@@ -54,6 +56,8 @@ export default function ControlPanelContent() {
                 
               );
             })}
+
+
         
     </Container>
   );
