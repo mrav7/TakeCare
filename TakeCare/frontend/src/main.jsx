@@ -42,7 +42,6 @@ ReactDOM.createRoot(document.getElementById('root')).render(
         <Route path="cp" element={<ControlPanel/>} />
         <Route path="signup-patient" element={<PatientRegister/>} />
         <Route path="patient-check" element={<PatientDailyReview/>} />
-        {/* <Route path="patients-list" element={<PatientsList />} /> */}
         <Route path="privacy-policy" element={<PrivacyPolicy />} />
         <Route path="admin-users-control" element={<AdminUsersControl />} />
         <Route path="admin-create-users" element={<AdminCreateUsers/>} />
@@ -56,4 +55,4 @@ ReactDOM.createRoot(document.getElementById('root')).render(
       </Routes>
     </BrowserRouter>
   </React.StrictMode>,
-  )
+)
