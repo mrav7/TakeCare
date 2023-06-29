@@ -21,7 +21,7 @@ class DisplayUsersFile extends Component {
       .then(response => response.json())
       .then(data => {
         this.setState({
-          userData: data,
+          usersData: data,
           loading: false
         });
       })
@@ -31,8 +31,8 @@ class DisplayUsersFile extends Component {
   }
 
   render() {
-    const { userData } = this.state;
-    const userList = userData.map((data, index) => (
+    const { usersData } = this.state;
+    const userList = usersData.map((data, index) => (
       <Container fluid className="person-list" key={index}>
         <ListGroup>
           <ListGroup.Item className="person-list-item">
