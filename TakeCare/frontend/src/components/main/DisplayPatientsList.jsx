@@ -30,14 +30,18 @@ class DisplayPatientFile extends Component {
       });
   }
 
-   handleDelete  (id) {
-    axios
-      .delete("http://localhost:3000/deleteUser/" + id)
-      .then((res) => {
+  deletePatient(id) {
+    fetch(`http://localhost:3000/deletePatient/${id}`, { method: 'DELETE' })
+      .then(response => response.json())
+      .then(data => {
+        console.log(data);
+        alert("El paciente ha sido eliminado");
         location.reload();
       })
-      .catch((err) => console.log(err));
-  };
+      .catch(error => {
+        console.error('Error al eliminar el usuario:', error);
+      });
+  }
 
   render() {
     const { patientData } = this.state;
@@ -94,7 +98,7 @@ class DisplayPatientFile extends Component {
           </ListGroup.Item>
           <ListGroup.Item className="edit-delete-buttons">
             <Button className="edit-button" >Editar</Button>
-            <Button className="delete-button" onClick={() => handleDelete(users.ID)}>Borrar</Button>
+            <Button className="delete-button" onClick={() => this.deletePatient(data.ID)}>Borrar</Button>
           </ListGroup.Item>
         </ListGroup>
       </Container>

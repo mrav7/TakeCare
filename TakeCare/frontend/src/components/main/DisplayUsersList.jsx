@@ -30,6 +30,19 @@ class DisplayUsersFile extends Component {
       });
   }
 
+  deleteUser(id) {
+    fetch(`http://localhost:3000/deleteUser/${id}`, { method: 'DELETE' })
+      .then(response => response.json())
+      .then(data => {
+        console.log(data);
+        alert("El usuario ha sido eliminado");
+        location.reload();
+      })
+      .catch(error => {
+        console.error('Error al eliminar el usuario:', error);
+      });
+  }
+
   render() {
     const { usersData } = this.state;
     const userList = usersData.map((data, index) => (
@@ -62,8 +75,7 @@ class DisplayUsersFile extends Component {
           </ListGroup.Item>
           <ListGroup.Item className="edit-delete-buttons">
             <Button className="edit-button">Editar</Button>
-            <Button className="delete-button">Borrar</Button>
-          </ListGroup.Item>
+            <Button className="delete-button" onClick={() => this.deleteUser(data.ID)}>Borrar</Button>          </ListGroup.Item>
         </ListGroup>
       </Container>
     ));
