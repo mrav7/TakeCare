@@ -54,3 +54,8 @@
     margin-left: 19%;
     margin-right: 25%;
 }
+
+.errorMsg {
+    color: red;
+    font-weight: bold;
+}

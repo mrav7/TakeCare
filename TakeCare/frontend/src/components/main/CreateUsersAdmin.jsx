@@ -6,7 +6,7 @@ import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
-
+import '../../components/styles/forms.css'
 
 function CreateUsersAdmin() {
   const [values, setValues] = useState({
@@ -59,7 +59,7 @@ function CreateUsersAdmin() {
               <Form.Label>Administrador? (responda con 1 si o 0 para no)</Form.Label>
               <Form.Control type="text" onChange={e => setValues({...values, isAdmin: e.target.value})}/>
             </Form.Group>
-            <Button variant="primary" type="submit">
+            <Button className="_button" variant="primary" type="submit">
               Crear
             </Button>
           </Form>

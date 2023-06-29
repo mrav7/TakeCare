@@ -48,12 +48,12 @@ export default function LoginForm() {
                             required:true
                         }
                         )}
-                         placeholder="Ingrese su correo electrónico"></Form.Control>
-                         {errors.email && errors.email.type === "required" && (
-                  <p className="errorMsg">Pon tu correo</p>
-                )}
+                         placeholder="Ingrese su correo electrónico"></Form.Control>                         
                         <Form.Text></Form.Text>
-                    </Form.Group>                
+                    </Form.Group>
+                    {errors.email && errors.email.type === "required" && (
+                  <p className="errorMsg">Pon tu correo</p>
+                )}                
                 </Col>                
                 <Col>
                     <Form.Group className="_mb-3" controlId="passInput">
@@ -64,12 +64,12 @@ export default function LoginForm() {
                             required:true
                         }
                         )}
-                         placeholder="Ingrese su contraseña"></Form.Control>
-                         {errors.password && errors.password.type === "required" && (
-                  <p className="errorMsg">Pon tu contraseña</p>
-                )}
+                         placeholder="Ingrese su contraseña"></Form.Control>                         
                         <Form.Text></Form.Text>
                     </Form.Group>
+                    {errors.password && errors.password.type === "required" && (
+                  <p className="errorMsg">Pon tu contraseña</p>
+                )}
                 </Col>
                 <Col>
                     <ReCAPTCHA className="_recaptchaLogin"

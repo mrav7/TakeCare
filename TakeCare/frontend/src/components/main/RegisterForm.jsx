@@ -57,7 +57,7 @@ export default function RegisterForm() {
         <Form className="form" onSubmit={handleSubmit(onSubmit)}>
           <h3 class="_h3">Regístrate</h3>
           <Row>
-            <Col>
+            <Col>   
               <Form.Group className="_mb-3" controlId="nameInput">
                 <Form.Label>
                   <MdAccountCircle className="_icon" />
@@ -71,16 +71,14 @@ export default function RegisterForm() {
                     pattern: /^([A-Za-z])+$/,
                   })}
                 ></Form.Control>
-
-                {errors.name && errors.name.type === "required" && (
+                <Form.Text></Form.Text>
+              </Form.Group>
+              {errors.name && errors.name.type === "required" && (
                   <p className="errorMsg">Pon tu nombre</p>
                 )}
                 {errors.name && errors.name.type === "pattern" && (
                   <p className="errorMsg">Debe ser solo letras sin espacios</p>
                 )}
-
-                <Form.Text></Form.Text>
-              </Form.Group>
             </Col>
             <Col>
               <Form.Group className="_mb-3" controlId="lastnameInput">
@@ -96,16 +94,14 @@ export default function RegisterForm() {
                   })}
                   placeholder="Ingrese su primer apellido"
                 ></Form.Control>
-
-                {errors.lastName && errors.lastName.type === "required" && (
+                <Form.Text></Form.Text>
+              </Form.Group>
+              {errors.lastName && errors.lastName.type === "required" && (
                   <p className="errorMsg">Pon tu primer apellido</p>
                 )}
                 {errors.lastName && errors.lastName.type === "pattern" && (
                   <p className="errorMsg">Debe ser solo letras sin espacios</p>
                 )}
-
-                <Form.Text></Form.Text>
-              </Form.Group>
             </Col>
           </Row>
           <Col>
@@ -121,13 +117,12 @@ export default function RegisterForm() {
                 }
                 )}
                 placeholder="Ingrese su correo electrónico"
-              ></Form.Control>
-
-              {errors.email && errors.email.type === "required" && (
-                <p className="errorMsg">Pon tu correo</p>
-              )}
+              ></Form.Control>              
               <Form.Text></Form.Text>
             </Form.Group>
+            {errors.email && errors.email.type === "required" && (
+                <p className="errorMsg">Pon tu correo</p>
+              )}
           </Col>
           <Col>
             <Form.Group className="_mb-3" controlId="professionInput" >
@@ -152,12 +147,11 @@ export default function RegisterForm() {
                   Terapeuta Ocupacional
                 </option>
                 <option value="N/A">N/A</option>
-              </Form.Select>
-              {errors.profession && errors.profession.type === "required" && (
+              </Form.Select>              
+            </Form.Group>
+            {errors.profession && errors.profession.type === "required" && (
                 <p className="errorMsg">Pon tu profesión</p>
               )}
-            </Form.Group>
-
           </Col>
           <Col>
             <Form.Group className="_mb-3" controlId="passInput">
@@ -175,8 +169,10 @@ export default function RegisterForm() {
                 }
                 )}
                 placeholder="Ingrese su contraseña"
-              ></Form.Control>
-              {errors.password && errors.password.type === "required" && (
+              ></Form.Control>              
+              <Form.Text></Form.Text>
+            </Form.Group>
+            {errors.password && errors.password.type === "required" && (
                 <p className="errorMsg">Pon tu contraseña</p>
               )}
               {errors.password && errors.password.type === "minLength" && (
@@ -188,8 +184,6 @@ export default function RegisterForm() {
               {errors.password && errors.password.type === "pattern" && (
                 <p className="errorMsg">Ponga solo mayúsculas, minúsculas y números</p>
               )}
-              <Form.Text></Form.Text>
-            </Form.Group>
           </Col>
           <Col>
             <Form.Group className="_mb-3" controlId="repassInput">
@@ -204,15 +198,15 @@ export default function RegisterForm() {
                   validate: value => value === watch('password')
                 })}
                 placeholder="Ingrese nuevamente su contraseña"
-              ></Form.Control>
-              {errors.rePassword && errors.rePassword.type === "required" && (
+              ></Form.Control>              
+              <Form.Text></Form.Text>
+            </Form.Group>
+            {errors.rePassword && errors.rePassword.type === "required" && (
                 <p className="errorMsg">Pon tu contraseña de nuevo</p>
               )}
               {errors.rePassword && errors.rePassword.type === "validate" && (
                 <p className="errorMsg">Las contraseñas no coinciden</p>
               )}
-              <Form.Text></Form.Text>
-            </Form.Group>
           </Col>
           <Col>
             <ReCAPTCHA className="_recaptchaRegister"
@@ -234,11 +228,11 @@ export default function RegisterForm() {
                 })}
 
                 label="Acepta las Condiciones de Uso y Política de Privacidad"
-              ></Form.Check>
-              {errors.checkbox && errors.checkbox.type === "required" && (
+              ></Form.Check>              
+            </Form.Group>
+            {errors.checkbox && errors.checkbox.type === "required" && (
                 <p className="errorMsg">Acepta las condiciones</p>
               )}
-            </Form.Group>
           </Col>
           <p className="text-center">
             ¿Ya tienes una cuenta? <a href="/login">Ingresa Aquí</a>

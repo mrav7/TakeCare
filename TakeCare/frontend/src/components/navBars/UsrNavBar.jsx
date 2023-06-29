@@ -13,8 +13,8 @@ function UsrNav() {
         <Navbar.Toggle aria-controls="basic-navbar-nav" />
         <Navbar.Collapse id="basic-navbar-nav">
           <Nav className="ms-auto">
-            <Nav.Link href="/signup-patient">registra paciente</Nav.Link>
-            <Nav.Link href="/patient-check">Revision diaria Paciente</Nav.Link>
+            <Nav.Link href="/signup-patient">Registra pacientes</Nav.Link>
+            <Nav.Link href="/patient-check">Revisión diaria de paciente</Nav.Link>
             <Nav.Link href="/cp">Panel de control</Nav.Link>
                     
           </Nav>

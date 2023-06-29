@@ -3,6 +3,7 @@ import { Container, Row, Col, Form, Button } from "react-bootstrap";
 import { useForm } from "react-hook-form";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
+import '../../components/styles/forms.css'
 
 function PatientRegisterForm() {
   const { register, handleSubmit, formState: { errors } } = useForm();
@@ -315,7 +316,7 @@ function PatientRegisterForm() {
             </Form.Group>
           </Col>
         </Row>
-        <Button variant="primary" type="submit">
+        <Button className="_button" variant="primary" type="submit">
           Registrar paciente
         </Button>
       </Form>

@@ -47,7 +47,7 @@ class DisplayPatientFile extends Component {
           <ListGroup.Item className="person-list-item">
             <Row className="person-details-row">
               <Col>
-                <span className="person-info">ID Paciente:</span> {index}
+                <span className="person-info">ID Paciente:</span> {data.ID}
               </Col>
               <Col>
                 <span className="person-info">Nombre:</span> {data.firstname}
