@@ -30,6 +30,15 @@ class DisplayPatientFile extends Component {
       });
   }
 
+   handleDelete  (id) {
+    axios
+      .delete("http://localhost:3000/deleteUser/" + id)
+      .then((res) => {
+        location.reload();
+      })
+      .catch((err) => console.log(err));
+  };
+
   render() {
     const { patientData } = this.state;
     const patientList = patientData.map((data, index) => (
@@ -84,8 +93,8 @@ class DisplayPatientFile extends Component {
             <span className="person-info">Observaciones:</span> {data.observations}
           </ListGroup.Item>
           <ListGroup.Item className="edit-delete-buttons">
-            <Button className="edit-button">Editar</Button>
-            <Button className="delete-button">Borrar</Button>
+            <Button className="edit-button" >Editar</Button>
+            <Button className="delete-button" onClick={() => handleDelete(users.ID)}>Borrar</Button>
           </ListGroup.Item>
         </ListGroup>
       </Container>

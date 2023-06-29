@@ -28,7 +28,7 @@ function PatientRegisterForm() {
     axios.post('http://localhost:3000/createPatient', values)
       .then(res => {
         console.log(res);
-        navigate('/patientPage')
+        navigate('/admin-user-list-control')
       })
       .catch(err => console.log(err)) 
   }

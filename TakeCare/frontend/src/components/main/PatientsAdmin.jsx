@@ -20,6 +20,15 @@ export default function PatientsAdmin() {
       .catch((err) => console.log(err));
   }, []);
 
+  const handleDelete = (id) => {
+    axios
+      .delete("http://localhost:3000/deleteUser/" + id)
+      .then((res) => {
+        location.reload();
+      })
+      .catch((err) => console.log(err));
+  };
+
   return (
     <>
       <Container>
