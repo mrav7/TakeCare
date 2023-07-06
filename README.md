@@ -10,7 +10,7 @@ Consiste en la aplicación web **TakeCare**, la cual en consideración de los ob
 
 ## Detalles de desarrollo
 
-**TakeCare** fue desarrollado utilizando los siguientes frameworks y herramientas:
+**TakeCare** fue construido utilizando los siguientes frameworks y herramientas:
 
 <table border="0">
  <tr>
