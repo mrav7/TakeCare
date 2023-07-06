@@ -1,14 +1,14 @@
-# Proyecto Final - ICI4240-1
+# Proyecto Final - ICI4241-1
 
-El presente repositorio contiene el proyecto final del curso Ingeniería Web impartido el 1S2023 en la PUCV.
+El presente repositorio contiene el proyecto final del curso Ingeniería de Software, impartido el 1S2023 en la PUCV.
 
 Consiste en la aplicación web **TakeCare**, la cual en consideración de los objetivos de desarrollo sostenible de la ONU tiene como objetivo facilitar el cuidado del adulto mayor.
 
 ## Desarrolladores 
+
 [Alex Otto](https://github.com/AlexOttoVicencio), [Rodrigo Fernandez](https://github.com/rodrifer27) y [Matías Andrade](https://github.com/mrav7)
 
 ## Detalles de desarrollo
-
 
 **TakeCare** fue desarrollado utilizando los siguientes frameworks y herramientas:
 
@@ -64,5 +64,6 @@ Para el backend
 ```
 npm install
 node app.js
+node auth.js
 ```
 
