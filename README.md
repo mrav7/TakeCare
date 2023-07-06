@@ -4,6 +4,9 @@ El presente repositorio contiene el proyecto final del curso Ingeniería Web imp
 
 Consiste en la aplicación web **TakeCare**, la cual en consideración de los objetivos de desarrollo sostenible de la ONU tiene como objetivo facilitar el cuidado del adulto mayor.
 
+## Desarrolladores 
+[Alex Otto](https://github.com/AlexOttoVicencio), [Rodrigo Fernandez](https://github.com/rodrifer27) y [Matías Andrade](https://github.com/mrav7)
+
 ## Detalles de desarrollo
 
 
