@@ -21,10 +21,7 @@ export default function LandingPage() {
         <h5 class="text-center">
            Ayudamos a los profesionales manteniendo
           información acerca de sus pacientes.
-        </h5>
-
-        <p>poner carrusel</p>
-        
+         </h5>
       </Container>
     </Container>
   );
