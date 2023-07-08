@@ -50,55 +50,87 @@ class DisplayPatientFile extends Component {
         <ListGroup>
           <ListGroup.Item className="person-list-item">
             <Row className="person-details-row">
-              <Col>
-                <span className="person-info">ID Paciente:</span> {data.ID}
+              <Col xs={6} md={3}>
+                <span className="person-info">ID Paciente:</span>
+                <br />
+                {data.ID}
               </Col>
-              <Col>
-                <span className="person-info">Nombre:</span> {data.firstname}
+              <Col xs={6} md={3}>
+                <span className="person-info">ID Profesional tratante:</span>
+                <br />
+                {data.IDProfessional}
               </Col>
-              <Col>
-                <span className="person-info">Apellido:</span> {data.lastname}
+              <Col xs={6} md={3}>
+                <span className="person-info">Nombre:</span>
+                <br />
+                {data.firstname}
               </Col>
-              <Col>
-                <span className="person-info">RUT:</span> {data.rut}
+              <Col xs={6} md={3}>
+                <span className="person-info">Apellido:</span>
+                <br />
+                {data.lastname}
               </Col>
             </Row>
             <Row className="person-details-row">
-              <Col>
-                <span className="person-info">Fecha de nacimiento:</span> {data.birthdate}
+              <Col xs={6} md={3}>
+                <span className="person-info">RUT:</span>
+                <br />
+                {data.rut}
               </Col>
-              <Col>
-                <span className="person-info">Edad:</span> {data.age}
+              <Col xs={6} md={3}>
+                <span className="person-info">Fecha de nacimiento:</span>
+                <br />
+                {data.birthdate.substring(0, 10)}
               </Col>
-              <Col>
-                <span className="person-info">Sexo:</span>{' '}
+              <Col xs={6} md={3}>
+                <span className="person-info">Edad:</span>
+                <br />
+                {data.age}
+              </Col>
+              <Col xs={6} md={3}>
+                <span className="person-info">Sexo:</span>
+                <br />
                 {data.gender === 0 ? 'Masculino' : 'Femenino'}
               </Col>
-              <Col>
-                <span className="person-info">Domicilio:</span> {data.address}
-              </Col>
             </Row>
             <Row className="person-details-row">
-              <Col>
-                <span className="person-info">Número telefónico:</span> {data.phone}
+              <Col xs={6} md={3}>
+                <span className="person-info">Domicilio:</span>
+                <br />
+                {data.address}
               </Col>
-              <Col>
-                <span className="person-info">Previsión:</span> {data.insurance}
+              <Col xs={6} md={3}>
+                <span className="person-info">Número telefónico:</span>
+                <br />
+                {data.phone}
+              </Col>
+              <Col xs={6} md={3}>
+                <span className="person-info">Previsión:</span>
+                <br />
+                {data.insurance}
               </Col>
             </Row>
           </ListGroup.Item>
           <ListGroup.Item className="person-list-item diagnosis-field">
-            <span className="person-info">Diagnóstico:</span> {data.diagnostics}
+            <span className="person-info">Diagnóstico:</span>
+            <br />
+            {data.diagnostics}
           </ListGroup.Item>
           <ListGroup.Item className="person-list-item treatment-field">
-            <span className="person-info">Tratamiento:</span> {data.treatments}
+            <span className="person-info">Tratamiento:</span>
+            <br />
+            {data.treatments}
           </ListGroup.Item>
           <ListGroup.Item className="person-list-item observation-field">
-            <span className="person-info">Observaciones:</span> {data.observations}
+            <span className="person-info">Observaciones:</span>
+            <br />
+            {data.observations}
           </ListGroup.Item>
           <ListGroup.Item className="edit-delete-buttons">
-            <Button className="edit-button" >Editar</Button>
-            <Button className="delete-button" onClick={() => this.deletePatient(data.ID)}>Borrar</Button>
+            <Button className="edit-button">Editar</Button>
+            <Button className="delete-button" onClick={() => this.deletePatient(data.ID)}>
+              Borrar
+            </Button>
           </ListGroup.Item>
         </ListGroup>
       </Container>
